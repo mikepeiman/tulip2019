@@ -1,7 +1,9 @@
 <template>
 <div class="product-card">
   <div class="img-overlay">
+    <div class="product-card-image">
     <img class="product-card-img" :src="src" />
+    </div>
     </div>
     {{ productName }}
   </div>
@@ -33,18 +35,15 @@ export default {
   border: 5px solid $blue-faint;
   border-radius: 3px;
   transition: all .25s;
+  position: relative;
+  height: auto;
 
   &:hover {
     border: 5px solid $blue;
     background: rgba(0, 0, 0, 0.25);
-  }
-}
-img {
-  z-index: -1;
-  &:after {
-    content: "";
-    background: linear-gradient(45deg,rgba(255,0,55,0.5), rgba(55,0,255,0.5));
-    position: absolute;
+    & img {
+      opacity: 1.0;
+    }
   }
 }
 
@@ -52,10 +51,11 @@ img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  margin-bottom: .5rem;
+  opacity: 0.75;
+  padding: 0;
 }
 
 .img-overlay {
-    background: linear-gradient(45deg,rgba(255,0,55,0.5), rgba(55,0,255,0.5));
+    background: linear-gradient(45deg,rgba($blue,0.5), rgba($graphite,0.5));
 }
 </style>

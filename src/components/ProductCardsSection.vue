@@ -78,7 +78,6 @@ export default {
   background: linear-gradient(180deg, #fad414 55%, #76d311 100%);
   background-clip: text;
   color: transparent;
-  // text-shadow: 2px 2px #76d311;
 }
 
 .gradient-underline-container {
@@ -91,52 +90,16 @@ export default {
   padding-top: 3px;
   background: black;
   position: relative;
-  // top: -6px;
-  // padding-bottom: 3px;
 }
 
 .subtitle {
-  // position: relative;
-  // top: -6px;
-  // display: inline;
   font-family: "Montserrat", "Neuton", serif;
   font-weight: 300;
-  // color: scale-color($color: #FAD414, $saturation: -25%, $lightness: -25%, $alpha: 1.0);
   color: #76d311;
-  // background: linear-gradient(90deg, #76d311, #fad414);
-  // background-clip: text;
-  // color: transparent;
   font-size: 1.5rem;
   font-weight: 400;
   margin: 0 0 2rem 0;
   padding: 0 0 0.5rem 0;
 
-  &:after {
-    // border-bottom: 1px solid #FAD414;
-    position: absolute;
-    width: 100%;
-    content: "";
-    left: 0;
-    bottom: 0;
-    background: blue;
-  }
-}
-
-h3 {
-  margin: 40px 0 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>
