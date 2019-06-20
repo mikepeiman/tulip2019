@@ -1,10 +1,10 @@
 <template>
 <div class="product-cards-section">
   <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :msg="`I am a product card ${card}`" :src="getImgUrl(imageSources[card-1])" />
+    <ProductCard class="content" v-for="card in cardnum" :productName="`I am a product card ${card}`" :src="getImgUrl(imageSources[card-1])" />
   </div>
   <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :msg="`I am a product card ${card}`"  :src="getImgUrl(imageSources[card])" />
+    <ProductCard class="content" v-for="card in cardnum" :productName="`I am a product card ${card}`"  :src="getImgUrl(imageSources[card])" />
   </div>
 </div>
 </template>
@@ -49,11 +49,11 @@ export default {
   display: grid;
   grid-template-columns: 1fr [content] 5fr 1fr;
   grid-template-rows: auto;
-  background: $bg-blue;
+  background: $blue-bg;
   border-top: 3px solid #81bbff;
   border-bottom: 3px solid #81bbff;
   padding: 2rem;
-  gap: 1rem;
+  gap: 3rem;
 
   @include media("<desktop") {
     grid-template-columns: [content] 3fr;
@@ -65,7 +65,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
   grid-row: auto;
-  gap: 1rem;
+  gap: 4rem;
   justify-content: space-evenly;
 }
 

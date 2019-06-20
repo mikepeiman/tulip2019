@@ -1,7 +1,9 @@
 <template>
-  <div class="product-card">
-    {{ msg }}
+<div class="product-card">
+  <div class="img-overlay">
     <img class="product-card-img" :src="src" />
+    </div>
+    {{ productName }}
   </div>
 </template>
 
@@ -9,7 +11,7 @@
 export default {
   name: 'ProductCard',
   props: {
-    msg: String,
+    productName: String,
     src: String
   },
   data() {
@@ -21,33 +23,39 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+
+<style lang="scss" scoped>
+@import "../styles/app.scss";
+
 .product-card {
-  background: #072140;
-  color: #81BBFF;
-  border: 3px solid #81BBFF;
-  padding: 2rem;
+  background: none;
+  color: $blue;
+  border: 5px solid $blue-faint;
+  border-radius: 3px;
+  transition: all .25s;
+
+  &:hover {
+    border: 5px solid $blue;
+    background: rgba(0, 0, 0, 0.25);
+  }
+}
+img {
+  z-index: -1;
+  &:after {
+    content: "";
+    background: linear-gradient(45deg,rgba(255,0,55,0.5), rgba(55,0,255,0.5));
+    position: absolute;
+  }
 }
 
 .product-card-img {
   width: 100%;
   height: 150px;
   object-fit: cover;
-  // max-width: 30%;
+  margin-bottom: .5rem;
 }
 
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.img-overlay {
+    background: linear-gradient(45deg,rgba(255,0,55,0.5), rgba(55,0,255,0.5));
 }
 </style>

@@ -21,7 +21,7 @@ export default {
 #nav {
   padding: 20px;
   color: $blue;
-  background: $bg-blue;
+  background: $blue-bg;
   border-bottom: 3px solid #81BBFF;
 
   a {
