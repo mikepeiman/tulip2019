@@ -1,10 +1,10 @@
 <template>
 <div class="product-cards-section">
   <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :productName="`I am a product card ${card}`" :src="getImgUrl(imageSources[card-1])" />
+    <ProductCard class="content" v-for="card in cardnum" :productName="`Fanuc ${card}`" :src="getImgUrl(imageSources[card-1])" />
   </div>
   <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :productName="`I am a product card ${card}`"  :src="getImgUrl(imageSources[card])" />
+    <ProductCard class="content" v-for="card in cardnum" :productName="`Mazak ${card}`"  :src="getImgUrl(imageSources[card])" />
   </div>
 </div>
 </template>
