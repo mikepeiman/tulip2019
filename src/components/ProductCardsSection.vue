@@ -1,16 +1,16 @@
 <template>
-  <div class="product-cards-section">
-    <div class="grid-container">
-      <ProductCard v-for="card in cardnum" :msg="`I am a product card ${card}`" />
-    </div>
-        <div class="grid-container">
-      <ProductCard v-for="card in cardnum" :msg="`I am a product card ${card}`" />
-    </div>
+<div class="product-cards-section">
+  <div class="grid-container">
+    <ProductCard class="content" v-for="card in cardnum" :msg="`I am a product card ${card}`" :src="getImgUrl(imageSources[card-1])" />
   </div>
+  <div class="grid-container">
+    <ProductCard class="content" v-for="card in cardnum" :msg="`I am a product card ${card}`"  :src="getImgUrl(imageSources[card])" />
+  </div>
+</div>
 </template>
 
 <script>
-import ProductCard from '@/components/ProductCard.vue'
+import ProductCard from "@/components/ProductCard.vue";
 
 export default {
   name: "ProductCardsSection",
@@ -23,7 +23,18 @@ export default {
   },
   data() {
     return {
-      cardnum: [1,2,3]
+      cardnum: [1, 2, 3],
+      imageSources: [
+        'DSC03193-forweb.jpg',
+        'DSC03208-forweb.jpg',
+        'DSC03218-forweb.jpg',
+        'DSC03226-forweb.jpg',
+      ]
+    };
+  },
+  methods: {
+    getImgUrl(img) {
+      return require('../assets/' + img)
     }
   }
 };
@@ -32,23 +43,37 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
+@import "./../styles/_include-media.scss";
+
 .product-cards-section {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
   display: grid;
-  flex-direction: column;
-  justify-content: space-evenly;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr [content] 5fr 1fr;
+  grid-template-rows: auto;
   background: #072140;
-  border-top: 3px solid #81BBFF;
-  border-bottom: 3px solid #81BBFF;
+  border-top: 3px solid #81bbff;
+  border-bottom: 3px solid #81bbff;
   padding: 2rem;
   gap: 1rem;
-  width: 60vw;
+
+  @include media("<desktop") {
+    grid-template-columns: [content] 3fr;
+  }
 }
 
 .grid-container {
+  grid-area: content;
   display: grid;
   grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-row: auto;
   gap: 1rem;
+  justify-content: space-evenly;
+}
+
+.content {
+  // grid-area: content;
 }
 
 .title {
@@ -56,7 +81,7 @@ export default {
   color: #fad414;
   font-size: 4rem;
   font-weight: 400;
-  margin: 0 0 .75rem 0;
+  margin: 0 0 0.75rem 0;
   background: linear-gradient(180deg, #fad414 55%, #76d311 100%);
   background-clip: text;
   color: transparent;
@@ -80,11 +105,11 @@ export default {
 .subtitle {
   // position: relative;
   // top: -6px;
-  // display: inline;  
+  // display: inline;
   font-family: "Montserrat", "Neuton", serif;
   font-weight: 300;
   // color: scale-color($color: #FAD414, $saturation: -25%, $lightness: -25%, $alpha: 1.0);
-  color: #76D311;
+  color: #76d311;
   // background: linear-gradient(90deg, #76d311, #fad414);
   // background-clip: text;
   // color: transparent;

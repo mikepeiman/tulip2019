@@ -1,6 +1,7 @@
 <template>
   <div class="product-card">
     {{ msg }}
+    <img class="product-card-img" :src="src" />
   </div>
 </template>
 
@@ -8,7 +9,13 @@
 export default {
   name: 'ProductCard',
   props: {
-    msg: String
+    msg: String,
+    src: String
+  },
+  data() {
+    return {
+
+    }
   }
 }
 </script>
@@ -21,6 +28,14 @@ export default {
   border: 3px solid #81BBFF;
   padding: 2rem;
 }
+
+.product-card-img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  // max-width: 30%;
+}
+
 h3 {
   margin: 40px 0 0;
 }

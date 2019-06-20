@@ -18,7 +18,7 @@ export default {
   props: {
     title: String,
     subtitle: String
-  }
+  },
 };
 </script>
 
@@ -65,7 +65,7 @@ export default {
   // color: transparent;
   font-size: 1.5rem;
   font-weight: 400;
-  margin: 0 0 2rem 0;
+  margin: 0 0 10rem 0;
   padding: 0 0 0.5rem 0;
 
   &:after {

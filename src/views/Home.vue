@@ -28,10 +28,5 @@ export default {
 body {
   background: black;
 }
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-}
 </style>
 
