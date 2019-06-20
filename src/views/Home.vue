@@ -1,13 +1,7 @@
 <template>
   <div class="home">
-    <!-- <div class="grid-container">
-          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
-          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
-          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
-          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
-          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
-    </div> -->
     <HeroHome title="Tulip Electronics Inc" subtitle="Delivering Reliable CNC Memory Upgrades Since 1988" />
+    <ProductCardsSection />
   </div>
 </template>
 
@@ -17,14 +11,15 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import HeroHome from '@/components/HeroHome.vue'
 import Nav from '@/components/Nav.vue'
 import ProductCard from '@/components/ProductCard.vue'
+import ProductCardsSection from '@/components/ProductCardsSection.vue'
 import Footer from '@/components/Footer.vue'
 import SignUp from '@/components/SignUp.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld,
-    HeroHome
+    HeroHome,
+    ProductCardsSection
   }
 }
 </script>
@@ -36,7 +31,7 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 </style>
 

@@ -1,23 +1,30 @@
 <template>
-  <div class="hero">
-    <div class="hero-bg">
-      <img class="hero-logo" alt="Tulip Electronics logo" src="../assets/logo.png">
-      <h1 class="title">{{ title }}</h1>
-      <!-- <span class="gradient-underline-container">
-        <span class="gradient-underline"> -->
-          <h2 class="subtitle">{{ subtitle }}</h2>
-        <!-- </span>
-      </span> -->
+  <div class="product-cards-section">
+    <div class="grid-container">
+      <ProductCard v-for="card in cardnum" :msg="`I am a product card ${card}`" />
+    </div>
+        <div class="grid-container">
+      <ProductCard v-for="card in cardnum" :msg="`I am a product card ${card}`" />
     </div>
   </div>
 </template>
 
 <script>
+import ProductCard from '@/components/ProductCard.vue'
+
 export default {
-  name: "HeroHome",
+  name: "ProductCardsSection",
   props: {
     title: String,
     subtitle: String
+  },
+  components: {
+    ProductCard
+  },
+  data() {
+    return {
+      cardnum: [1,2,3]
+    }
   }
 };
 </script>
@@ -25,6 +32,24 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
+.product-cards-section {
+  display: grid;
+  flex-direction: column;
+  justify-content: space-evenly;
+  grid-template-columns: 1fr;
+  background: #072140;
+  border-top: 3px solid #81BBFF;
+  border-bottom: 3px solid #81BBFF;
+  padding: 2rem;
+  gap: 1rem;
+  width: 60vw;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  gap: 1rem;
+}
 
 .title {
   font-family: "Montserrat Subrayada", "Neuton", serif;

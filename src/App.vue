@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Nav />
     <router-view/>
   </div>
 </template>
 
+<script>
+import Nav from '@/components/Nav.vue'
+export default {
+  name: 'App',
+  components: {
+    Nav
+  }
+}
+</script>
+
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Neuton&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700|Montserrat:300,400,700|Neuton:200,300,700&display=swap');
 
 h1 {
   font-family: 'Neuton', serif;
@@ -28,12 +35,16 @@ body {
   color: #2c3e50;
 }
 #nav {
-  padding: 30px;
+  padding: 20px;
+  background: #072140;
+  border-bottom: 3px solid #81BBFF;
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    font-weight: 300;
+    font-family: 'Montserrat';
+    color: #76D311;
+    margin: 1rem;
     &.router-link-exact-active {
-      color: #42b983;
+      color: #fad414;
     }
   }
 }
