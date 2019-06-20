@@ -1,8 +1,10 @@
 <template>
-  <div id="app">
-    <Nav />
-    <router-view/>
-  </div>
+<div id="app">
+  <!-- <div class="body-bg"> -->
+  <!-- </div> -->
+  <Nav />
+  <router-view />
+</div>
 </template>
 
 <script>
@@ -11,6 +13,11 @@ export default {
   name: 'App',
   components: {
     Nav
+  },
+  methods: {
+    getImgUrl(img) {
+      return require(img)
+    }
   }
 }
 </script>
@@ -21,6 +28,7 @@ export default {
 h1 {
   font-family: 'Neuton', serif;
 }
+
 body {
   margin: 0;
   height: 100vh;
@@ -32,17 +40,23 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #fff;
+  
+  background: url("./assets/bg06.png") no-repeat 50% 25% fixed;
+  background-size: 50vh;
 }
+
 #nav {
   padding: 20px;
   background: #072140;
   border-bottom: 3px solid #81BBFF;
+
   a {
     font-weight: 300;
     font-family: 'Montserrat';
     color: #76D311;
     margin: 1rem;
+
     &.router-link-exact-active {
       color: #fad414;
     }

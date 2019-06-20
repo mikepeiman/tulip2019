@@ -22,8 +22,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-
 <style lang="scss" scoped>
 
 .title {
@@ -82,11 +80,11 @@ export default {
 .hero-bg {
   // position: relative;
   padding-top: 4rem;
-  background: url(../assets/Tulip-about-bg-light-v2.0.png) no-repeat;
-  background-size: 40vh;
-  background-position: 50% 30%;
-  top: 0px;
-  left: 0px;
+  // background: url(../assets/Tulip-about-bg-light-v2.0.png) no-repeat;
+  // background-size: 40vh;
+  // background-position: 50% 30%;
+  // top: 0px;
+  // left: 0px;
 }
 
 .hero-logo {
