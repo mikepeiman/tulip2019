@@ -3,11 +3,11 @@
     <div class="hero-bg">
       <img class="hero-logo" alt="Tulip Electronics logo" src="../assets/logo.png">
       <h1 class="title">{{ title }}</h1>
-      <span class="gradient-underline-container">
-        <span class="gradient-underline">
+      <!-- <span class="gradient-underline-container">
+        <span class="gradient-underline"> -->
           <h2 class="subtitle">{{ subtitle }}</h2>
-        </span>
-      </span>
+        <!-- </span>
+      </span> -->
     </div>
   </div>
 </template>
@@ -25,15 +25,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=Neuton:200,300&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700|Montserrat:300,400,700|Neuton:200,300,700&display=swap');
 
 .title {
-  font-family: "Neuton", serif;
+  font-family: "Montserrat Subrayada", "Neuton", serif;
   color: #fad414;
   font-size: 4rem;
   font-weight: 400;
-  margin: 0;
-  background: linear-gradient(90deg, #fad414 40%, #76d311 60%);
+  margin: 0 0 1rem 0;
+  background: linear-gradient(180deg, #fad414 50%, #76d311 100%);
   background-clip: text;
   color: transparent;
 }
@@ -55,14 +55,15 @@ export default {
 .subtitle {
   position: relative;
   top: -6px;
-  display: inline;
-  font-family: "Neuton", serif;
+  display: inline;  
+  font-family: "Montserrat", "Neuton", serif;
+  font-weight: 300;
   // color: scale-color($color: #FAD414, $saturation: -25%, $lightness: -25%, $alpha: 1.0);
-  // color: #76D311;
-  background: linear-gradient(90deg, #fad414, #76d311);
-  background-clip: text;
-  color: transparent;
-  font-size: 2rem;
+  color: #76D311;
+  // background: linear-gradient(90deg, #76d311, #fad414);
+  // background-clip: text;
+  // color: transparent;
+  font-size: 1.5rem;
   font-weight: 400;
   margin: 0 0 2rem 0;
   padding: 0 0 0.5rem 0;

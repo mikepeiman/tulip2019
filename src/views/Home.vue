@@ -1,6 +1,13 @@
 <template>
   <div class="home">
-    <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+    <!-- <div class="grid-container">
+          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+          <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
+    </div> -->
+    <HeroHome title="Tulip Electronics Inc" subtitle="Delivering Reliable CNC Memory Upgrades Since 1988" />
   </div>
 </template>
 
@@ -25,6 +32,11 @@ export default {
 <style lang="scss" scoped>
 body {
   background: black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
 }
 </style>
 
