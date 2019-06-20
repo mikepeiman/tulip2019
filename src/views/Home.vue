@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld msg="Tulip Electronics Inc."/>
-    <HeroHome msg="Hero Home Inc."/>
+    <HeroHome title="Tulip Electronics" subtitle="CNC Memory Upgrades" />
   </div>
 </template>
 
