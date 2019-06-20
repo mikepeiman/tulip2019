@@ -78,19 +78,13 @@ export default {
 }
 
 .hero-bg {
-  // position: relative;
   padding-top: 4rem;
-  // background: url(../assets/Tulip-about-bg-light-v2.0.png) no-repeat;
-  // background-size: 40vh;
-  // background-position: 50% 30%;
-  // top: 0px;
-  // left: 0px;
 }
 
 .hero-logo {
   position: relative;
-  // top: 75px;
   width: 35vh;
+  margin-bottom: 2rem;
 }
 
 h3 {

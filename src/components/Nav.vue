@@ -16,8 +16,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../styles/app.scss";
+
 #nav {
-  color: #fad414;
+  padding: 20px;
+  color: $blue;
+  background: $bg-blue;
+  border-bottom: 3px solid #81BBFF;
+
+  a {
+    font-weight: 300;
+    font-family: 'Montserrat';
+    color: #76D311;
+    margin: 1rem;
+    text-decoration: none;
+
+    &.router-link-exact-active {
+      color: #fad414;
+    }
+  }
 }
 
 h3 {
@@ -32,6 +49,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: $green;
 }
 </style>

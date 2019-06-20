@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Montserrat+Subrayada:400,700|Montserrat:300,400,700|Neuton:200,300,700&display=swap');
+@import "styles/app.scss";
 
 h1 {
   font-family: 'Neuton', serif;
@@ -46,20 +46,4 @@ body {
   background-size: 50vh;
 }
 
-#nav {
-  padding: 20px;
-  background: #072140;
-  border-bottom: 3px solid #81BBFF;
-
-  a {
-    font-weight: 300;
-    font-family: 'Montserrat';
-    color: #76D311;
-    margin: 1rem;
-
-    &.router-link-exact-active {
-      color: #fad414;
-    }
-  }
-}
 </style>

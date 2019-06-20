@@ -43,16 +43,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="scss" scoped>
-@import "./../styles/_include-media.scss";
+@import "../styles/app.scss";
 
 .product-cards-section {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
   display: grid;
   grid-template-columns: 1fr [content] 5fr 1fr;
   grid-template-rows: auto;
-  background: #072140;
+  background: $bg-blue;
   border-top: 3px solid #81bbff;
   border-bottom: 3px solid #81bbff;
   padding: 2rem;
@@ -70,10 +67,6 @@ export default {
   grid-row: auto;
   gap: 1rem;
   justify-content: space-evenly;
-}
-
-.content {
-  // grid-area: content;
 }
 
 .title {
@@ -127,22 +120,6 @@ export default {
     bottom: 0;
     background: blue;
   }
-}
-
-.hero-bg {
-  // position: relative;
-  padding-top: 4rem;
-  background: url(../assets/Tulip-about-bg-light-v2.0.png) no-repeat;
-  background-size: 40vh;
-  background-position: 50% 30%;
-  top: 0px;
-  left: 0px;
-}
-
-.hero-logo {
-  position: relative;
-  // top: 75px;
-  width: 35vh;
 }
 
 h3 {
