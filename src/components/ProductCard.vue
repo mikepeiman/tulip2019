@@ -58,7 +58,7 @@ export default {
     color: white;
     padding: 0.75rem;
     margin: 0;
-    text-transform: uppercase;
+    // text-transform: uppercase;
   }
 }
 

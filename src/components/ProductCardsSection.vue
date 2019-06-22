@@ -1,12 +1,22 @@
 <template>
-<div class="product-cards-section">
-  <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :productName="`Fanuc ${card}`" :src="getImgUrl(imageSources[card-1])" />
+  <div class="product-cards-section">
+    <div class="grid-container">
+      <ProductCard
+        class="content"
+        v-for="(product, index) in productList"
+        :productName="`${product.make} ${product.model} ${product.version}`"
+        :src="getImgUrl(imageSources[index])"
+      />
+    </div>
+    <div class="grid-container">
+      <ProductCard
+        class="content"
+        v-for="card in cardnum"
+        :productName="`Mazak ${card}`"
+        :src="getImgUrl(imageSources[card])"
+      />
+    </div>
   </div>
-  <div class="grid-container">
-    <ProductCard class="content" v-for="card in cardnum" :productName="`Mazak ${card}`"  :src="getImgUrl(imageSources[card])" />
-  </div>
-</div>
 </template>
 
 <script>
@@ -14,37 +24,76 @@ import ProductCard from "@/components/ProductCard.vue";
 
 export default {
   name: "ProductCardsSection",
-  props: {
-    title: String,
-    subtitle: String
-  },
   components: {
     ProductCard
   },
   data() {
     return {
-      productMfgs: [
-        {
-          mfg: 'Fanuc',
-          models: ['0, 10'],
-          version: ['Analog', 'Digital'],
-          upgrades: [],
-          src: '',
-        },
-      ],
+      productList: [],
       cardnum: [1, 2, 3],
       imageSources: [
-        'DSC03193-forweb.jpg',
-        'DSC03208-forweb.jpg',
-        'DSC03218-forweb.jpg',
-        'DSC03226-forweb.jpg',
+        "DSC03193-forweb.jpg",
+        "DSC03208-forweb.jpg",
+        "DSC03218-forweb.jpg",
+        "DSC03226-forweb.jpg"
       ]
     };
   },
   methods: {
     getImgUrl(img) {
-      return require('../assets/' + img)
+      return require("../assets/" + img);
+    },
+    getData() {
+      var Airtable = require("airtable");
+      var self = this;
+      Airtable.configure({
+        endpointUrl: "https://api.airtable.com",
+        apiKey: "keyQoffgeTdQ6I4Lt"
+      });
+      var base = Airtable.base("appP3Ar7WtMKMd6Hu");
+
+      base("Product Summary")
+        .select({
+          // Selecting the first 3 records in Grid view:
+          // maxRecords: 3,
+          view: "Grid view"
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            // This function (`page`) will get called for each page of records.
+
+            records.forEach(function(record) {
+              console.log("Retrieved", record.get("id"));
+              console.log(record.fields);
+              if (record.fields.id) {
+                self.productList.push(record.fields);
+              }
+            });
+
+            // To fetch the next page of records, call `fetchNextPage`.
+            // If there are more records, `page` will get called again.
+            // If there are no more records, `done` will get called.
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            self.logData();
+          }
+        );
+    },
+    logData() {
+      console.log('logData() for each product: ');
+      console.log(this.productList);
     }
+  },
+  mounted: function() {
+    this.getData();
+    this.imageSources.forEach((img, index) => {
+      console.log(`imageSource ${index}: ${img}`)
+    })
   }
 };
 </script>
@@ -109,6 +158,5 @@ export default {
   font-weight: 400;
   margin: 0 0 2rem 0;
   padding: 0 0 0.5rem 0;
-
 }
 </style>
