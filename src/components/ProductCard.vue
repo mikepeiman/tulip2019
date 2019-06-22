@@ -1,27 +1,30 @@
 <template>
-<div class="product-card">
-  <div class="img-overlay">
+  <div class="product-card">
     <div class="product-card-image">
-      <img class="product-card-img" :src="src" />
-    </div>
+      <img class="product-card-img" :src="src">
     </div>
     <h3>{{ productName }}</h3>
+    <div class="product-details" :details="productDetails">
+      <h3 class="model">Model</h3>
+      <h3 class="version">Version</h3>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ProductCard',
+  name: "ProductCard",
   props: {
     productName: String,
     src: String
   },
   data() {
     return {
-
-    }
+      detailsHeading: 'Test',
+      productDetails: []
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -34,31 +37,30 @@ export default {
   color: $blue;
   border: 5px solid $blue-faint;
   border-radius: 3px;
-  transition: all .25s;
+  transition: all 0.25s;
   position: relative;
   height: auto;
 
   &:hover {
     border: 5px solid $blue;
     background: rgba(0, 0, 0, 0.25);
-    transition: all .25s;
+    transition: all 0.25s;
 
     & img {
-      opacity: 1.0;
+      opacity: 1;
     }
   }
 
   & h3 {
     font-size: 1rem;
     font-weight: 400;
-    font-family: 'montserrat';
-    color: $green;
-    padding: .75rem;
+    font-family: "montserrat";
+    color: white;
+    padding: 0.75rem;
     margin: 0;
     text-transform: uppercase;
   }
 }
-
 
 .product-card-img {
   width: 100%;
@@ -66,10 +68,22 @@ export default {
   object-fit: cover;
   opacity: 0.75;
   padding: 0;
-  transition: all .25s;
+  transition: all 0.25s;
+}
+
+.product-details {
+ display: grid;
+ grid-template-columns: [model] 1fr [version] 1fr;
+ margin: .5rem;
+ background: rgba($green, 0.25);
+ & h3 { 
+   color: $green; 
+   }
 }
 
 .img-overlay {
   background: linear-gradient(45deg, rgba($blue, 0.5), rgba($graphite, 0.5));
+  padding: 0;
+  margin: 0;
 }
 </style>

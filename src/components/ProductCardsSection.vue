@@ -23,6 +23,15 @@ export default {
   },
   data() {
     return {
+      productMfgs: [
+        {
+          mfg: 'Fanuc',
+          models: ['0, 10'],
+          version: ['Analog', 'Digital'],
+          upgrades: [],
+          src: '',
+        },
+      ],
       cardnum: [1, 2, 3],
       imageSources: [
         'DSC03193-forweb.jpg',
