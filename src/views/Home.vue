@@ -3,7 +3,9 @@
     <HeroHome title="Tulip Electronics Inc" subtitle="Delivering Reliable CNC Memory Upgrades Since 1988" />
     <ProductCardsSection />
     <Infosection />
+    <Boilerplate />
     <Contact />
+    <Boilerplate />
     <Footer />
   </div>
 </template>
@@ -18,6 +20,7 @@ import Infosection from '@/components/Infosection.vue'
 import Contact from '@/components/Contact.vue'
 import Footer from '@/components/Footer.vue'
 import SignUp from '@/components/SignUp.vue'
+import Boilerplate from '@/components/Boilerplate.vue'
 
 export default {
   name: 'home',
@@ -26,7 +29,8 @@ export default {
     ProductCardsSection,
     Infosection,
     Contact,
-    Footer
+    Footer,
+    Boilerplate
   }
 }
 </script>

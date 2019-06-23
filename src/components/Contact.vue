@@ -1,6 +1,6 @@
 <template>
   <div class="section-container">
-    <h1 class="product-cards-title">Section</h1>
+    <h1 class="product-cards-title">Contact Section</h1>
     <p>Contact Us</p>
   </div>
 </template>

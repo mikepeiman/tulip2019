@@ -1,7 +1,7 @@
 <template>
   <div class="section-container">
-    <h1 class="product-cards-title">Section</h1>
-    <p>INFOSECTION</p>
+    <h1 class="product-cards-title">Infosection Section</h1>
+    <p>Infosection</p>
   </div>
 </template>
 

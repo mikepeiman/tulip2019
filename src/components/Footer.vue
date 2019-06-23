@@ -1,6 +1,6 @@
 <template>
   <div class="section-container">
-    <h1 class="product-cards-title">Section</h1>
+    <h1 class="product-cards-title">Footer Section</h1>
     <p>Footer</p>
   </div>
 </template>
