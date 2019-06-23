@@ -1,7 +1,9 @@
 <template>
 <div class="product-cards-section">
   <div class="grid-container">
-    <ProductCard class="content" v-for="(products, index) in productMakes" v-bind="index" :products="products" :index="index" />
+    <div class="product-container" v-for="(product, index) in productsByMake">
+      <ProductCard class="content" v-for="p in product" v-bind="index" :index="index" :img="getImgUrl(images[index])" :products="p" />
+    </div>
   </div>
 </div>
 </template>
@@ -23,12 +25,13 @@ export default {
       productVersions: [],
       test: [],
       mfgList: [],
-      imageSources: [
-        "DSC03193-forweb.jpg",
-        "DSC03208-forweb.jpg",
-        "DSC03218-forweb.jpg",
-        "DSC03226-forweb.jpg"
-      ]
+      images: []
+      // imageSources: [
+      //   "DSC03193-forweb.jpg",
+      //   "DSC03208-forweb.jpg",
+      //   "DSC03218-forweb.jpg",
+      //   "DSC03226-forweb.jpg"
+      // ]
     };
   },
   methods: {
@@ -91,30 +94,47 @@ export default {
       this.modelsByMake();
     },
     modelsByMake() {
-      this.productMakes.forEach(make => {
-        console.log(make);
+      this.productMakes.forEach((make, i) => {
+        console.log('modelsByMake()');
+        let currentImg = this.productList[i].image[0].filename
+        this.images.push(currentImg)
+        console.log(this.productList[i].image[0].filename)
         let currentModels = [];
         let currentVersions = [];
         this.productList.forEach(product => {
           if (product.make === make) {
             console.log(`Make ${make} matches`);
-            currentModels.push(`'${product.model}'`);
+            currentModels.push(`"${product.model}"`);
             if (product.version === undefined) {
               product.version = "N/A";
             }
-            currentVersions.push(`'${product.version}'`);
+            currentVersions.push(`"${product.version}"`);
           }
         });
-        console.log(`{"${make}": {"models": "${currentModels}"},}`);
+        console.log(`{"${make}": {"models": [${currentModels}],}`);
         currentModels.forEach(mod => {
           console.log(mod);
         });
         this.productsByMake.push(
-          JSON.parse(`{"${make}": {
-          "models": "${currentModels}",
-          "versions": "${currentVersions}"}}`)
+          JSON.parse(`{"${make}": 
+            {
+            "models": [${currentModels}],
+            "versions": [${currentVersions}],
+            "image": "${currentImg}"
+            }
+          }`)
         );
       });
+    },
+    getModels(p) {
+      console.log('getModels()')
+      console.log(p.models)
+      return p.models
+    },
+    getVersions(p) {
+      console.log('getVersions()')
+      console.log(p.versions)
+      return p.versions
     }
   },
   mounted: function () {

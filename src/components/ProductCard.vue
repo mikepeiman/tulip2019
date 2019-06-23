@@ -1,35 +1,31 @@
 <template>
   <div class="product-card">
     <div class="product-card-image">
-      <img class="product-card-img" :src="productImg">
+      <img class="product-card-img" :src="img">
     </div>
-    <h3>{{ products }}</h3>
-    <h3>{{ index }}</h3>
-    <div class="product-details" :details="productDetails">
+    <div class="product-details">
       <div class="model">
         <h3>Model</h3>
-        <h3 v-for="model in products">{{ model }}</h3>
+        <h3 v-for="model in products.models">{{ model }}</h3>
       </div>
       <div class="version">
         <h3>Version</h3>
-        <h3 v-for="ver in productVersions">{{ ver }}</h3>
+        <h3 v-for="ver in products.versions">{{ ver }}</h3>
       </div>
     </div>
   </div>
 </template>
-  
+
 <script>
 export default {
   name: "ProductCard",
   props: {
-    productId: Number,
-    productMake: String,
-    products: String,
+    models: Array,
+    versions: Array,
     index: Number,
-    productModels: String,
-    productVersions: String,
+    img: String,
+    products: String,
     productImg: String,
-    productSummary: {}
   },
   data() {
     return {
