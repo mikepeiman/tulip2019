@@ -4,13 +4,13 @@
       <img class="product-card-img" :src="img">
     </div>
     <div class="product-details">
-      <div class="model">
-        <h3>Model</h3>
-        <h3 v-for="model in products.models">{{ model }}</h3>
+      <div class="model inner-grid">
+        <h3 class="inner-grid-item">Model</h3>
+        <h3 class="inner-grid-item" v-for="model in products.models">{{ model }}</h3>
       </div>
-      <div class="version">
-        <h3>Version</h3>
-        <h3 v-for="ver in products.versions">{{ ver }}</h3>
+      <div class="version inner-grid">
+        <h3 class="inner-grid-item">Version</h3>
+        <h3 class="inner-grid-item" v-for="ver in products.versions">{{ ver }}</h3>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@ export default {
     font-weight: 400;
     font-family: "montserrat";
     color: white;
-    padding: 0.75rem;
+    padding: 0.5rem;
     margin: 0;
     // text-transform: uppercase;
   }
@@ -94,5 +94,17 @@ export default {
   background: linear-gradient(45deg, rgba($blue, 0.5), rgba($graphite, 0.5));
   padding: 0;
   margin: 0;
+}
+
+.inner-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: stretch;
+  text-align: start;
+}
+.inner-grid-item {
+  border-bottom: 1px solid white;
+  height: 100%;
 }
 </style>

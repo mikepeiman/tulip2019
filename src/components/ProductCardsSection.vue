@@ -166,9 +166,9 @@ export default {
 .grid-container {
   grid-area: content;
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, 1fr));
+  grid-template-columns: repeat(3, minmax(250px, 1fr));
   grid-row: auto;
-  gap: 4rem;
+  gap: 2rem;
   justify-content: space-evenly;
 }
 
