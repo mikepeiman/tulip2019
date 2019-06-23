@@ -3,8 +3,12 @@
     <h1 class="product-cards-title">Available Upgrades</h1>
     <div class="product-cards-section">
       <div class="grid-container">
-        <div class="product-container" @click="expandCard($event)" v-for="(product, index) in productsByMake">
-          <ProductCard          
+        <div
+          class="product-container"
+          @click="expandCard($event)"
+          v-for="(product, index) in productsByMake"
+        >
+          <ProductCard
             v-for="p in product"
             v-bind="index"
             :index="index"
@@ -32,17 +36,7 @@ export default {
       productList: [],
       productMakes: [],
       productsByMake: [],
-      models: [],
-      productVersions: [],
-      test: [],
-      mfgList: [],
       images: []
-      // imageSources: [
-      //   "DSC03193-forweb.jpg",
-      //   "DSC03208-forweb.jpg",
-      //   "DSC03218-forweb.jpg",
-      //   "DSC03226-forweb.jpg"
-      // ]
     };
   },
   methods: {
@@ -50,31 +44,30 @@ export default {
       return require("../assets/" + img);
     },
     expandCard(e) {
-      console.log('expandCard called')
+      console.log("expandCard called");
 
-      this.targetElement(e)
-      
+      this.targetElement(e);
     },
     targetElement(e, s) {
-      let grid = 'grid-container'
-      let card = 'product-container'
-      e = e.target
+      let grid = "grid-container";
+      let card = "product-container";
+      e = e.target;
       for (; e && e !== document; e = e.parentNode) {
-        console.log('getClosestParentMatch()')
-        console.log(e)
-        console.log(e.classList[0])
+        console.log("getClosestParentMatch()");
+        console.log(e);
+        console.log(e.classList[0]);
         // if (e.classList === undefined) e.classList = "empty"
-        console.log(e.classList.contains(grid))
+        console.log(e.classList.contains(grid));
         // if (e.classList.contains(grid)) {
         //   e.classList.toggle('expand-grid')
         //   return e
         //   }
-                  if (e.classList.contains(card)) {
-          e.classList.toggle('expand-card')
-          return e
-          }
+        if (e.classList.contains(card)) {
+          e.classList.toggle("expand-card");
+          return e;
+        }
       }
-      return null
+      return null;
     },
     getProductsByMake(make) {
       this.sortByMake();
@@ -166,6 +159,7 @@ export default {
     }
   },
   mounted: function() {
+    console.log('ProductCardsSection mounted')
     const grid = document.querySelector(".product-cards-section");
     wrapGrid(grid);
     this.getData();

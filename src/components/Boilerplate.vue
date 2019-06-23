@@ -1,15 +1,18 @@
 <template>
   <div class="section-container">
     <h1 class="product-cards-title">Section</h1>
-    <p>Footer</p>
+    <p>INFOSECTION</p>
   </div>
 </template>
 
 <script>
-export default {
-  name: "Footer",
-  components: {
+import ProductCard from "@/components/ProductCard.vue";
+import { wrapGrid } from "animate-css-grid";
 
+export default {
+  name: "Infosection",
+  components: {
+    ProductCard
   },
   data() {
     return {
@@ -19,7 +22,7 @@ export default {
   methods: {
   },
   mounted: function() {
-    console.log('Footer mounted')
+    console.log('Infosection mounted')
   }
 };
 </script>
@@ -30,7 +33,7 @@ export default {
 @import "../styles/app.scss";
 
 .section-container {
-  background: $blue-bg;
+  background: $gold-bg;
   // border-top: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
   // border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: 0.5);
   padding: 2rem 0;
