@@ -1,18 +1,20 @@
 <template>
-  <div class="product-card">
-    <div class="product-card-image">
-      <img class="product-card-img" :src="img">
+<div class="product-card">
+  <div class="product-card-image">
+    <img class="product-card-img" :src="img">
     </div>
-    <div class="product-details">
-      <div class="model inner-grid">
-        <h3 class="inner-grid-item">Model</h3>
-        <h3 class="inner-grid-item" v-for="model in products.models">{{ model }}</h3>
-      </div>
-      <div class="version inner-grid">
-        <h3 class="inner-grid-item">Version</h3>
-        <h3 class="inner-grid-item" v-for="ver in products.versions">{{ ver }}</h3>
-      </div>
-    </div>
+    <table class="product-details">
+      <thead>
+        <th class="table-heading">Model</th>
+        <th class="table-heading">Version</th>
+      </thead>
+      <tbody>
+        <tr v-for="(model, i) in products.models">
+          <td class="table-item model">{{ model }}</td>
+          <td class="table-item version">{{ products.versions[i] }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -48,7 +50,7 @@ export default {
   border-radius: 3px;
   transition: all 0.25s;
   position: relative;
-  height: auto;
+  height: 100%;
 
   &:hover {
     border: 5px solid $blue;
@@ -81,12 +83,28 @@ export default {
 }
 
 .product-details {
-  display: grid;
-  grid-template-columns: [make] 1fr [version] 1fr;
+  display: table;
+  text-align: left;
+  width: calc(100% - 1rem);
   margin: 0.5rem;
-  background: rgba($green, 0.25);
+  color: white;
+  font-weight: 300;
+  font-family: 'Montserrat';
+
   & h3 {
     color: $green;
+  }
+
+}
+
+table {
+    & tr {
+    width: 100%;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+  }
+  & td {
+    width: 50%;
+    padding: .25rem;
   }
 }
 
@@ -103,6 +121,19 @@ export default {
   align-items: stretch;
   text-align: start;
 }
+
+.table-heading {
+  border-bottom: 3px solid rgba($blue,0.5);
+  margin-bottom: .5rem;
+}
+
+tr:first-of-type {
+  margin-bottom: 1em;
+}
+.table-item {
+  border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+
 .inner-grid-item {
   border-bottom: 1px solid white;
   height: 100%;

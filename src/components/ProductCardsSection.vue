@@ -150,7 +150,8 @@ export default {
 
 .product-cards-section {
   display: grid;
-  grid-template-columns: 1fr [content] 5fr 1fr;
+
+  grid-template-columns: [content] 3fr;
   grid-template-rows: auto;
   background: $blue-bg;
   border-top: 3px solid #81bbff;
@@ -158,15 +159,30 @@ export default {
   padding: 2rem;
   gap: 3rem;
 
-  @include media("<desktop") {
-    grid-template-columns: [content] 3fr;
+  @include media(">large") {
+    grid-template-columns: 1fr [content] 10fr 1fr;
+  }
+  @include media(">xl") {
+    grid-template-columns: 1fr [content] 5fr 1fr;
   }
 }
 
 .grid-container {
   grid-area: content;
   display: grid;
-  grid-template-columns: repeat(3, minmax(250px, 1fr));
+  grid-template-columns: 100%;
+
+  @include media(">small") {
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
+  }
+
+  @include media(">medium") {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+    @include media(">large") {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+
   grid-row: auto;
   gap: 2rem;
   justify-content: space-evenly;
