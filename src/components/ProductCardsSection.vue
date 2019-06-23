@@ -177,6 +177,9 @@ export default {
   }
 
   @include media(">medium") {
+    // display: flex;
+    // align-content: center;
+    // flex-wrap: wrap;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
   }
     @include media(">large") {
