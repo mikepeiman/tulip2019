@@ -20,9 +20,9 @@ export default {
 
 #nav {
   padding: 20px;
-  color: $blue;
+  color: change-color($blue, $lightness: 40%, $alpha: .5);
   background: $blue-bg;
-  border-bottom: 3px solid #81BBFF;
+  border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
 
   a {
     font-weight: 300;

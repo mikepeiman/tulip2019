@@ -66,13 +66,17 @@ body {
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Montserrat','Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
 
-  background: url("./assets/bg06.png") no-repeat 50% 25% fixed;
+  background: url("./assets/bg06.png") no-repeat 50% 20% fixed;
   background-size: 50vh;
+  @include media(">large") {
+    background: url("./assets/bg06.png") no-repeat 50% 0% fixed;
+  background-size: 75vh;
+  }
 }
 </style>

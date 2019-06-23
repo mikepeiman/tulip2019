@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "airtable": "^0.6.0",
+    "animate-css-grid": "^1.4.0",
     "axios": "^0.19.0",
     "core-js": "^2.6.5",
     "include-media": "^1.4.9",

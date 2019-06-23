@@ -2,12 +2,12 @@
 <div class="product-card">
   <div class="product-card-image">
     <img class="product-card-img" :src="img">
-    <h1 class="product-card-title">{{ make[0] }}</h1>
+    <h1 class="product-card-title test1 test2">{{ make[0] }}</h1>
     </div>
     <table class="product-details">
       <thead>
-        <th class="table-heading">Model</th>
-        <th class="table-heading">Version</th>
+        <th class="table-heading">Models</th>
+        <th class="table-heading">Versions</th>
       </thead>
       <tbody>
         <tr v-for="(model, i) in products.models">
@@ -23,13 +23,10 @@
 export default {
   name: "ProductCard",
   props: {
-    make: String,
-    models: Array,
-    versions: Array,
+    make: Array,
     index: Number,
     img: String,
-    products: String,
-    productImg: String,
+    products: Object,
   },
   data() {
     return {
@@ -53,6 +50,7 @@ export default {
   transition: all 0.25s;
   position: relative;
   height: 100%;
+  transition: all .25s;
 
   &:hover {
     border: 5px solid $blue;
@@ -61,6 +59,11 @@ export default {
 
     & img {
       opacity: 1;
+    }
+    & .product-card-title {
+      color: $green;
+      border-bottom: 3px solid $blue; //change-color($blue, $lightness: 40%, $alpha: .5);
+      transition: all .25s;
     }
   }
 
@@ -86,11 +89,12 @@ export default {
 
 .product-card-title {
   font-family: 'Montserrat';
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin: 0;
   padding: .25rem;
   color: change-color($blue, $lightness: 50%, $alpha: 1);
   border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
+  transition: all .25s;
 }
 
 .product-details {

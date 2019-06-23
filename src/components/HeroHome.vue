@@ -27,11 +27,11 @@ export default {
 
 .title {
   font-family: "Montserrat Subrayada", "Neuton", serif;
-  color: #fad414;
+  color: $gold;
   font-size: 2.25rem;
   font-weight: 400;
   margin: 0 0 .75rem 0;
-  background: linear-gradient(180deg, #fad414 55%, #76d311 100%);
+  background: linear-gradient(180deg, $green 35%, $gold 100%);
   background-clip: text;
   color: transparent;
   padding: .5rem;
@@ -68,7 +68,7 @@ export default {
 .subtitle {
   font-family: "Montserrat", "Neuton", serif;
   font-weight: 300;
-  color: #76D311;
+  color: $gold;
   font-size: 1.25rem;
   font-weight: 400;
   margin: 0 0 8rem 0;

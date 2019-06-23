@@ -1,15 +1,26 @@
 <template>
-<div class="product-cards-section">
-  <div class="grid-container">
-    <div class="product-container" v-for="(product, index) in productsByMake">
-      <ProductCard class="content" v-for="p in product" v-bind="index" :index="index" :make="Object.keys(product)" :img="getImgUrl(images[index])" :products="p" />
+  <div class="section-container">
+    <h1 class="product-cards-title">Available Upgrades</h1>
+    <div class="product-cards-section">
+      <div class="grid-container">
+        <div class="product-container" @click="expandCard($event)" v-for="(product, index) in productsByMake">
+          <ProductCard          
+            v-for="p in product"
+            v-bind="index"
+            :index="index"
+            :make="Object.keys(product)"
+            :img="getImgUrl(images[index])"
+            :products="p"
+          />
+        </div>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
+import { wrapGrid } from "animate-css-grid";
 
 export default {
   name: "ProductCardsSection",
@@ -38,6 +49,33 @@ export default {
     getImgUrl(img) {
       return require("../assets/" + img);
     },
+    expandCard(e) {
+      console.log('expandCard called')
+
+      this.targetElement(e)
+      
+    },
+    targetElement(e, s) {
+      let grid = 'grid-container'
+      let card = 'product-container'
+      e = e.target
+      for (; e && e !== document; e = e.parentNode) {
+        console.log('getClosestParentMatch()')
+        console.log(e)
+        console.log(e.classList[0])
+        // if (e.classList === undefined) e.classList = "empty"
+        console.log(e.classList.contains(grid))
+        // if (e.classList.contains(grid)) {
+        //   e.classList.toggle('expand-grid')
+        //   return e
+        //   }
+                  if (e.classList.contains(card)) {
+          e.classList.toggle('expand-card')
+          return e
+          }
+      }
+      return null
+    },
     getProductsByMake(make) {
       this.sortByMake();
       return this.productsByMake.filter(product => product.make === make);
@@ -61,7 +99,7 @@ export default {
           function page(records, fetchNextPage) {
             // This function (`page`) will get called for each page of records.
 
-            records.forEach(function (record) {
+            records.forEach(function(record) {
               console.log("Retrieved", record.get("id"));
               console.log(record.fields);
               if (record.fields.id) {
@@ -95,10 +133,10 @@ export default {
     },
     modelsByMake() {
       this.productMakes.forEach((make, i) => {
-        console.log('modelsByMake()');
-        let currentImg = this.productList[i].image[0].filename
-        this.images.push(currentImg)
-        console.log(this.productList[i].image[0].filename)
+        console.log("modelsByMake()");
+        let currentImg = this.productList[i].image[0].filename;
+        this.images.push(currentImg);
+        console.log(this.productList[i].image[0].filename);
         let currentModels = [];
         let currentVersions = [];
         this.productList.forEach(product => {
@@ -125,19 +163,11 @@ export default {
           }`)
         );
       });
-    },
-    getModels(p) {
-      console.log('getModels()')
-      console.log(p.models)
-      return p.models
-    },
-    getVersions(p) {
-      console.log('getVersions()')
-      console.log(p.versions)
-      return p.versions
     }
   },
-  mounted: function () {
+  mounted: function() {
+    const grid = document.querySelector(".product-cards-section");
+    wrapGrid(grid);
     this.getData();
   }
 };
@@ -148,29 +178,35 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/app.scss";
 
+.section-container {
+  // background: $blue-bg;
+  // border-top: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
+  // border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: 0.5);
+  padding: 2rem 0;
+}
+
 .product-cards-section {
   display: grid;
-
-  grid-template-columns: [content] 3fr;
+  grid-template-columns: [space] 0fr [content] 1fr [space] 0fr;
   grid-template-rows: auto;
-  background: $blue-bg;
-  border-top: 3px solid #81bbff;
-  border-bottom: 3px solid #81bbff;
-  padding: 2rem;
-  gap: 3rem;
+  gap: 2rem;
 
   @include media(">large") {
     grid-template-columns: 1fr [content] 10fr 1fr;
+    gap: 2.5rem;
   }
+
   @include media(">xl") {
     grid-template-columns: 1fr [content] 5fr 1fr;
+    gap: 3rem;
   }
 }
 
 .grid-container {
   grid-area: content;
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr;
+  // grid-template-areas: "start center end";
 
   @include media(">small") {
     grid-template-columns: repeat(2, minmax(200px, 1fr));
@@ -182,13 +218,26 @@ export default {
     // flex-wrap: wrap;
     grid-template-columns: repeat(3, minmax(200px, 1fr));
   }
-    @include media(">large") {
+
+  @include media(">large") {
     grid-template-columns: repeat(3, minmax(250px, 1fr));
   }
 
   grid-row: auto;
   gap: 2rem;
   justify-content: space-evenly;
+}
+
+.expand-card {
+  grid-column: span 3;
+  grid-area: start;
+}
+
+.product-cards-title {
+  font-family: "Montserrat";
+  grid-area: title;
+  font-weight: 300;
+  color: $green;
 }
 
 .title {
@@ -218,8 +267,7 @@ export default {
   font-family: "Montserrat", "Neuton", serif;
   font-weight: 300;
   color: #76d311;
-  font-size: 1.5rem;
-  font-weight: 400;
+  font-size: 2rem;
   margin: 0 0 2rem 0;
   padding: 0 0 0.5rem 0;
 }
