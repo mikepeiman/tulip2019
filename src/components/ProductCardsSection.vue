@@ -1,7 +1,7 @@
 <template>
 <div class="product-cards-section">
   <div class="grid-container">
-    <ProductCard class="content" v-for="product in productList" :productName="`${product.make} ${product.model} ${product.version}`" :src="getImgUrl(product.image[0].filename)" />
+    <ProductCard class="content" v-for="(products, index) in productMakes" v-bind="index" :products="products" :index="index" />
   </div>
 </div>
 </template>
@@ -11,75 +11,115 @@ import ProductCard from "@/components/ProductCard.vue";
 
 export default {
   name: "ProductCardsSection",
-  props: {
-    title: String,
-    subtitle: String
-  },
   components: {
     ProductCard
   },
   data() {
     return {
       productList: [],
-      cardnum: [1, 2, 3],
+      productMakes: [],
+      productsByMake: [],
+      models: [],
+      productVersions: [],
+      test: [],
+      mfgList: [],
       imageSources: [
-        'DSC03193-forweb.jpg',
-        'DSC03208-forweb.jpg',
-        'DSC03218-forweb.jpg',
-        'DSC03226-forweb.jpg',
+        "DSC03193-forweb.jpg",
+        "DSC03208-forweb.jpg",
+        "DSC03218-forweb.jpg",
+        "DSC03226-forweb.jpg"
       ]
     };
   },
   methods: {
     getImgUrl(img) {
-      return require('../assets/' + img)
+      return require("../assets/" + img);
+    },
+    getProductsByMake(make) {
+      this.sortByMake();
+      return this.productsByMake.filter(product => product.make === make);
     },
     getData() {
-      var Airtable = require('airtable');
+      var Airtable = require("airtable");
       var self = this;
       Airtable.configure({
-        endpointUrl: 'https://api.airtable.com',
-        apiKey: 'keyQoffgeTdQ6I4Lt'
+        endpointUrl: "https://api.airtable.com",
+        apiKey: "keyQoffgeTdQ6I4Lt"
       });
-      var base = Airtable.base('appP3Ar7WtMKMd6Hu');
+      var base = Airtable.base("appP3Ar7WtMKMd6Hu");
 
-      base('Product Summary').select({
-        // Selecting the first 3 records in Grid view:
-        // maxRecords: 3,
-        view: "Grid view"
-      }).eachPage(function page(records, fetchNextPage) {
-        // This function (`page`) will get called for each page of records.
+      base("Product Summary")
+        .select({
+          // Selecting the first 3 records in Grid view:
+          // maxRecords: 3,
+          view: "Grid view"
+        })
+        .eachPage(
+          function page(records, fetchNextPage) {
+            // This function (`page`) will get called for each page of records.
 
-        records.forEach(function (record) {
-          console.log('Retrieved', record.get('id'));
-          console.log(record.fields)
-          if(record.fields.id) {
-            self.productList.push(record.fields)
+            records.forEach(function (record) {
+              console.log("Retrieved", record.get("id"));
+              console.log(record.fields);
+              if (record.fields.id) {
+                self.productList.push(record.fields);
+                console.log(`Version: ${record.fields.version}`);
+              }
+            });
+
+            // To fetch the next page of records, call `fetchNextPage`.
+            // If there are more records, `page` will get called again.
+            // If there are no more records, `done` will get called.
+            fetchNextPage();
+          },
+          function done(err) {
+            if (err) {
+              console.error(err);
+              return;
+            }
+            self.sortByMake();
+          }
+        );
+    },
+    sortByMake() {
+      console.log(`this.productList: ${this.productList}`);
+      console.log(this.productList);
+      this.productMakes = this.productList.map(product => {
+        return product.make;
+      });
+      this.productMakes = [...new Set(this.productMakes)];
+      this.modelsByMake();
+    },
+    modelsByMake() {
+      this.productMakes.forEach(make => {
+        console.log(make);
+        let currentModels = [];
+        let currentVersions = [];
+        this.productList.forEach(product => {
+          if (product.make === make) {
+            console.log(`Make ${make} matches`);
+            currentModels.push(`'${product.model}'`);
+            if (product.version === undefined) {
+              product.version = "N/A";
+            }
+            currentVersions.push(`'${product.version}'`);
           }
         });
-
-        // To fetch the next page of records, call `fetchNextPage`.
-        // If there are more records, `page` will get called again.
-        // If there are no more records, `done` will get called.
-        fetchNextPage();
-
-      }, function done(err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        self.logData()
+        console.log(`{"${make}": {"models": "${currentModels}"},}`);
+        currentModels.forEach(mod => {
+          console.log(mod);
+        });
+        this.productsByMake.push(
+          JSON.parse(`{"${make}": {
+          "models": "${currentModels}",
+          "versions": "${currentVersions}"}}`)
+        );
       });
-
-    },
-    logData() {
-      console.log(`this.productList: ${this.productList}`)
-      console.log(this.productList)
     }
   },
   mounted: function () {
     this.getData();
-  },
+  }
 };
 </script>
 
@@ -143,6 +183,5 @@ export default {
   font-weight: 400;
   margin: 0 0 2rem 0;
   padding: 0 0 0.5rem 0;
-
 }
 </style>

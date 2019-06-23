@@ -1,26 +1,39 @@
 <template>
   <div class="product-card">
     <div class="product-card-image">
-      <img class="product-card-img" :src="src">
+      <img class="product-card-img" :src="productImg">
     </div>
-    <h3>{{ productName }}</h3>
+    <h3>{{ products }}</h3>
+    <h3>{{ index }}</h3>
     <div class="product-details" :details="productDetails">
-      <h3 class="model">Model</h3>
-      <h3 class="version">Version</h3>
+      <div class="model">
+        <h3>Model</h3>
+        <h3 v-for="model in products">{{ model }}</h3>
+      </div>
+      <div class="version">
+        <h3>Version</h3>
+        <h3 v-for="ver in productVersions">{{ ver }}</h3>
+      </div>
     </div>
   </div>
 </template>
-
+  
 <script>
 export default {
   name: "ProductCard",
   props: {
-    productName: String,
-    src: String
+    productId: Number,
+    productMake: String,
+    products: String,
+    index: Number,
+    productModels: String,
+    productVersions: String,
+    productImg: String,
+    productSummary: {}
   },
   data() {
     return {
-      detailsHeading: 'Test',
+      detailsHeading: "Test",
       productDetails: []
     };
   }
@@ -72,13 +85,13 @@ export default {
 }
 
 .product-details {
- display: grid;
- grid-template-columns: [model] 1fr [version] 1fr;
- margin: .5rem;
- background: rgba($green, 0.25);
- & h3 { 
-   color: $green; 
-   }
+  display: grid;
+  grid-template-columns: [make] 1fr [version] 1fr;
+  margin: 0.5rem;
+  background: rgba($green, 0.25);
+  & h3 {
+    color: $green;
+  }
 }
 
 .img-overlay {
