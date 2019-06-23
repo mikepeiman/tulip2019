@@ -2,6 +2,7 @@
 <div class="product-card">
   <div class="product-card-image">
     <img class="product-card-img" :src="img">
+    <h1 class="product-card-title">{{ make[0] }}</h1>
     </div>
     <table class="product-details">
       <thead>
@@ -22,6 +23,7 @@
 export default {
   name: "ProductCard",
   props: {
+    make: String,
     models: Array,
     versions: Array,
     index: Number,
@@ -82,6 +84,15 @@ export default {
   transition: all 0.25s;
 }
 
+.product-card-title {
+  font-family: 'Montserrat';
+  font-size: 2rem;
+  margin: 0;
+  padding: .25rem;
+  color: change-color($blue, $lightness: 50%, $alpha: 1);
+  border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
+}
+
 .product-details {
   display: table;
   text-align: left;
@@ -98,13 +109,20 @@ export default {
 }
 
 table {
-    & tr {
+  & thead {
+    padding: .5rem;
+  }
+  & th {
+    padding: .65rem 0;
+  }
+  & tr {
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    
   }
   & td {
     width: 50%;
-    padding: .25rem;
+    padding: .65rem .25rem;
+    // border-bottom: 1px solid rgba(255,255,255,0.5);
   }
 }
 
@@ -123,7 +141,7 @@ table {
 }
 
 .table-heading {
-  border-bottom: 3px solid rgba($blue,0.5);
+  // border-bottom: 3px solid rgba($blue,0.5);
   margin-bottom: .5rem;
 }
 
@@ -131,7 +149,8 @@ tr:first-of-type {
   margin-bottom: 1em;
 }
 .table-item {
-  border-bottom: 1px solid rgba(255,255,255,0.5);
+  // border-bottom: 1px solid rgba(255,255,255,0.5);
+  background: change-color($blue, $lightness: 40%, $alpha: .5);
 }
 
 .inner-grid-item {

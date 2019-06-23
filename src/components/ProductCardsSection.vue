@@ -2,7 +2,7 @@
 <div class="product-cards-section">
   <div class="grid-container">
     <div class="product-container" v-for="(product, index) in productsByMake">
-      <ProductCard class="content" v-for="p in product" v-bind="index" :index="index" :img="getImgUrl(images[index])" :products="p" />
+      <ProductCard class="content" v-for="p in product" v-bind="index" :index="index" :make="Object.keys(product)" :img="getImgUrl(images[index])" :products="p" />
     </div>
   </div>
 </div>
