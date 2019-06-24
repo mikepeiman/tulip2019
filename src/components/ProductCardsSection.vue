@@ -1,6 +1,19 @@
 <template>
-  <div class="section-container">
-    <h1 class="section-title">Available Upgrades</h1>
+    <Section
+      title="Available Upgrades"
+      primaryColor="#76D311"
+      secondaryColor="#FAD414"
+      accentColor="#252525"
+      bgColor="#252525"
+      alpha="0.95"
+      pos="bottom"
+      :bg="getImgUrl(`the-illusionist.png`)"
+      repeat="repeat"
+      borderWidth="3">
+
+<div class="section-container product-cards-section">
+
+      
     <div class="product-cards-section">
       <div class="grid-container">
         <div
@@ -20,16 +33,20 @@
       </div>
     </div>
   </div>
+  </div>
+    </Section>
 </template>
 
 <script>
 import ProductCard from "@/components/ProductCard.vue";
+import Section from "@/components/Section.vue";
 import { wrapGrid } from "animate-css-grid";
 
 export default {
   name: "ProductCardsSection",
   components: {
-    ProductCard
+    ProductCard,
+    Section
   },
   data() {
     return {
@@ -169,14 +186,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../styles/app.scss";
 
-.section-container {
-  // background: $blue-bg;
-  // border-top: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
-  // border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: 0.5);
+.section-container.product-cards-section {
+  border-top: none;
   padding: 2rem 0;
+    display: flex;
+  flex-direction: column;
 }
 
 .product-cards-section {

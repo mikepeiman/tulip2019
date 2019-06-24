@@ -1,12 +1,6 @@
 <template>
 <div class="section-container" :style="containerStyle">
   <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
-  <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
-  <div class="triangle-container" :style="contentStyle">
-    <p class="section-content">{{ content }}</p>
-    <div class="css-triangle" :style="triangleStyle">
-    </div>
-  </div>
   <slot></slot>
 </div>
 </template>
@@ -15,7 +9,7 @@
 import hexToRgba from 'hex-to-rgba';
 
 export default {
-  name: "Infosection",
+  name: "Section",
   props: {
     title: String,
     subtitle: String,
@@ -95,7 +89,7 @@ $bg-image: "./../assets/the-illusionist.png";
 $bg-repeat: repeat;
 
 .section-container {
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   // background: url($bg-image);
@@ -104,18 +98,15 @@ $bg-repeat: repeat;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  // border-bottom: 3px solid $section-color; 
+  // border-top: 3px solid $section-color; 
   padding: $section-padding 0;
-  // margin: 1rem 0;
-  box-shadow: 0 0 10px 3px rgba(0,0,0,0.75);
+  box-shadow: 0 0 10px 10px rgba($graphite, 0.75);
 }
 
 .section-title {
   font-family: "Montserrat";
   grid-area: title;
   font-weight: 300;
-  color: $green;
-  border: 3px solid $contrast-color;
   background: $graphite;
   width: max-content;
   align-self: center;
@@ -123,8 +114,8 @@ $bg-repeat: repeat;
   margin-top: $section-padding;
   text-shadow: 1px 1px $graphite;
   justify-self: flex-start;
-  // border-bottom: 3px solid $contrast-color;
 }
+
 .section-subtitle {
   font-family: "Montserrat";
   grid-area: title;
