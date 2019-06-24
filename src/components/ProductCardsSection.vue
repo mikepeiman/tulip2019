@@ -1,6 +1,6 @@
 <template>
   <div class="section-container">
-    <h1 class="product-cards-title">Available Upgrades</h1>
+    <h1 class="section-title">Available Upgrades</h1>
     <div class="product-cards-section">
       <div class="grid-container">
         <div
@@ -227,7 +227,7 @@ export default {
   grid-area: start;
 }
 
-.product-cards-title {
+.section-title {
   font-family: "Montserrat";
   grid-area: title;
   font-weight: 300;
