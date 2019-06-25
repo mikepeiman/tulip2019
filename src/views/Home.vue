@@ -51,10 +51,11 @@
       :gradColor1="`${this.colors.gold}`"
       :gradColor2="`${this.colors.graphite}`"
       :gradColor3="`${this.colors.tulip}`"
-      :images="this.images"
-      alpha="0.75"
+      :images="this.images.panel1"
+      alpha="0.25"
       pos="bottom"
       :bg="getImgUrl(`wild-sea.png`)"
+      :overlay="false"
       repeat="repeat"
       borderWidth="3"
     />
@@ -62,7 +63,7 @@
       title="Info Section"
       subtitle="Something Generic"
       content="This is the section content"
-      :primaryColor="`${this.colors.green}`"
+      :primaryColor="`${this.colors.tulip}`"
       :secondaryColor="`${this.colors.gold}`"
       :accentColor="`${this.colors.tulip}`"
       :bgColor="`${this.colors.gold}`"
@@ -72,6 +73,7 @@
       alpha="0.75"
       pos="bottom"
       :bg="getImgUrl(`jade.jpg`)"
+      :images="this.images.panel2"
       repeat="no-repeat"
       borderWidth="3"
     />
@@ -89,6 +91,7 @@
       alpha="0.75"
       pos="bottom"
       :bg="getImgUrl(`leather-nunchuck.png`)"
+      :images="this.images.panel3"
       repeat="repeat"
       borderWidth="3"
     />
@@ -195,13 +198,21 @@ export default {
         graphite: "#252525",
         altBlue: "#0FC1FF"
       },
-      images: ["bg15.png", "canvas-orange.jpg", "DSC03208-forweb.jpg"]
+      images: {
+        "panel1": ["bg15.png", "canvas-orange.jpg", "DSC03208-forweb.jpg"],
+        "panel2": ["pcb-001.png", "pcb-006b.png", "pcb-009.png"],
+        "panel3": ["pcb-003.png", "pcb-004.png", "pcb-008b.png"],
+      }
     };
   },
   methods: {
     getImgUrl(img) {
       return require("./../assets/" + img);
     }
+  },
+  mounted() {
+    console.log('############################################## mounted() this.images')
+    console.log(this.images.panel1)
   }
 };
 </script>

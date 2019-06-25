@@ -9,7 +9,7 @@
     <!-- </div> -->
     <slot></slot>
     <div class="image-container" v-if="images">
-      <div class="section-image"  v-for="image in images" :style="`background-image: url(${getImgUrl(image)});`" width="200" height="auto"></div>
+      <div class="section-image" v-for="image in images" :style="imageStyle(image)"></div>
     </div>
   </div>
 </template>
@@ -83,7 +83,8 @@ export default {
       return `
       border-${this.pos}-color: ${this.primaryColor};
       `;
-    }
+    },
+
   },
   methods: {
     getImgUrl(bg) {
@@ -91,6 +92,12 @@ export default {
     },
     convert(color, alpha) {
       return hexToRgba(color, alpha);
+    },
+    imageStyle(image) {
+      return `
+      background-image: url(${this.getImgUrl(image)});
+      border: 1px solid ${this.primaryColor};
+      `;
     }
   },
   mounted: function() {
@@ -165,14 +172,16 @@ $bg-repeat: repeat;
   flex-direction: row;
   position: relative;
   width: 100vw;
-  background: rgba(0,0,0,0.5);
-
+  justify-content: center;
+  // background: rgba(0,0,0,0.5);
 }
 
 .section-image {
-  height: 20vw;
-  width: 20vw;
+  height: 12vw;
+  width: 18vw;
   margin: 2rem;
+  background-size: cover;
+  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.75);
 }
 
 .triangle-container {
