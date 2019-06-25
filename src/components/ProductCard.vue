@@ -8,15 +8,11 @@
       <thead>
         <th class="table-heading">Models</th>
         <th class="table-heading">Versions</th>
-        <th class="table-button">Buy Now</th>
       </thead>
       <tbody>
         <tr v-for="(model, i) in products.models">
           <td class="table-item model">{{ model }}</td>
           <td class="table-item version">{{ products.versions[i] }}</td>
-          <td class="table-item">
-            <button class="product-card-add-to-cart">Add To Cart</button>
-          </td>
         </tr>
       </tbody>
     </table>
@@ -119,14 +115,6 @@ table {
   border-spacing: 1px;
   transition: all 0.25s;
   &:hover {
-    & th:last-of-type {
-      display: block;
-      opacity: 1;
-      width: auto;
-    }
-    & tr {
-      // transform: scale(1.03);
-    }
     & td:last-of-type {
       display: block;
       opacity: 1;
@@ -217,10 +205,7 @@ tr:first-of-type {
   // &:hover {
   //   background: change-color($blue, $lightness: 45%, $alpha: 1);
   // }
-  &:last-of-type {
-    opacity: 0;
-    width: 0;
-  }
+
 }
 
 .inner-grid-item {
