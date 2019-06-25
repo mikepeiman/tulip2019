@@ -38,7 +38,6 @@ export default {
     containerStyle() {
       return `
       background-image: linear-gradient(45deg, ${this.convert(this.accentColor, this.alpha)}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
-      border-bottom: ${this.borderWidth}px solid ${this.primaryColor};
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
@@ -141,7 +140,7 @@ $bg-repeat: repeat;
 .triangle-container {
   background: $graphite;
   width: 50vw;
-  left: 25vw;
+  align-self: center;
   position: relative;
   height: 50px;
   border: 3px solid $contrast-color;

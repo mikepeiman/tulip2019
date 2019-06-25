@@ -32,7 +32,6 @@ export default {
     containerStyle() {
       return `
       background-image: linear-gradient(45deg, ${this.convert(this.accentColor, this.alpha)}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
-      border-bottom: ${this.borderWidth}px solid ${this.primaryColor};
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
