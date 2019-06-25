@@ -1,15 +1,15 @@
 <template>
-<div class="hero">
-  <div class="hero-bg">
-    <img class="hero-logo" alt="Tulip Electronics logo" src="../assets/logo.png">
-    <h1 class="title">{{ title }}</h1>
-    <!-- <span class="gradient-underline-container">
-        <span class="gradient-underline"> -->
-    <h2 class="subtitle">{{ subtitle }}</h2>
-    <!-- </span>
-      </span> -->
+  <div class="hero">
+    <div class="hero-bg">
+      <img class="hero-logo" alt="Tulip Electronics logo" src="../assets/logo.png">
+      <h1 class="title">{{ title }}</h1>
+      <!-- <span class="gradient-underline-container">
+      <span class="gradient-underline">-->
+      <h2 class="subtitle">{{ subtitle }}</h2>
+      <!-- </span>
+      </span>-->
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -18,27 +18,39 @@ export default {
   props: {
     title: String,
     subtitle: String
-  },
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../styles/app.scss";
+.hero {
+  height: 100vh;
+}
 
+.hero-bg {
+  width: 100%;
+  // position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
 .title {
   font-family: "Montserrat Subrayada", "Neuton", serif;
   color: $gold;
   font-size: 2.25rem;
   font-weight: 400;
-  margin: 0 0 .75rem 0;
+  margin: 0 0 0.75rem 0;
   background: linear-gradient(180deg, $green 35%, $gold 100%);
   background-clip: text;
   color: transparent;
-  padding: .5rem;
+  padding: 0.5rem;
 
   @include media(">xs") {
     font-size: 2.5rem;
-    padding: .75rem;
+    padding: 0.75rem;
   }
 
   @include media(">small") {
@@ -50,7 +62,6 @@ export default {
     font-size: 4rem;
     padding: 1rem;
   }
-
 }
 
 .gradient-underline-container {

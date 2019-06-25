@@ -101,8 +101,8 @@ export default {
     }
   },
   mounted: function() {
-    console.log("Infosection mounted");
-    console.log(this.convert(this.bgColor, 0.5));
+    // console.log("Infosection mounted");
+    // console.log(this.convert(this.bgColor, 0.5));
   }
 };
 </script>

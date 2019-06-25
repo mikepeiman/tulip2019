@@ -10,7 +10,7 @@
         <th class="table-heading">Versions</th>
       </thead>
       <tbody>
-        <tr v-for="(model, i) in products.models">
+        <tr v-for="(model, i) in products.models" @click="expandRow($event)">
           <td class="table-item model">{{ model }}</td>
           <td class="table-item version">{{ products.versions[i] }}</td>
         </tr>
@@ -33,6 +33,14 @@ export default {
       detailsHeading: "Test",
       productDetails: []
     };
+  },
+  methods: {
+    expandRow(e) {
+      console.log('expandRow')
+      console.log(e.target.parentNode)
+      let row = e.target.parentNode
+      row.classList.toggle('absolute-modal')
+    }
   }
 };
 </script>
@@ -53,7 +61,7 @@ export default {
   transition: all 0.25s;
 
   &:hover {
-    border: 5px solid $blue;
+    // border: 5px solid $blue;
     background: rgba(0, 0, 0, 0.5);
     transition: all 0.25s;
 
@@ -62,7 +70,7 @@ export default {
     }
     & .product-card-title {
       color: white;
-      border-bottom: 3px solid $blue; //change-color($blue, $lightness: 40%, $alpha: .5);
+      border-bottom: 3px solid $green; //change-color($blue, $lightness: 40%, $alpha: .5);
       transition: all 0.25s;
     }
   }
@@ -93,7 +101,7 @@ export default {
   margin: 0;
   padding: 0.25rem;
   color: change-color($blue, $lightness: 50%, $alpha: 1);
-  border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: 0.5);
+  border-bottom: 3px solid $blue-faint;
   transition: all 0.25s;
 }
 
@@ -105,7 +113,6 @@ export default {
   color: white;
   font-weight: 300;
   font-family: "Montserrat";
-
   & h3 {
     color: $green;
   }
@@ -114,13 +121,7 @@ export default {
 table {
   border-spacing: 1px;
   transition: all 0.25s;
-  &:hover {
-    & td:last-of-type {
-      display: block;
-      opacity: 1;
-      width: auto;
-    }
-  }
+
   & thead {
     padding: 0.5rem;
   }
@@ -129,30 +130,18 @@ table {
   }
   & tr {
     width: 100%;
+    // height: auto;
+    top: auto;
+    left: auto;
     transition: all 0.25s;
     &:hover {
       background: change-color($blue, $lightness: 45%, $alpha: 1);
       transform: scale(1.02);
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-      border-spacing: 2px 6px;
       height: 150%;
-      & .table-item:last-of-type {
-        display: block;
-      }
       & .product-card-add-to-cart {
         background: white;
       }
-      // & :before {
-      //   content: "BUY NOW";
-      //   position: absolute;
-      //   background: $graphite;
-      //   padding: .15rem;
-      //   border: 1px solid $green;
-      //   top: -1rem;
-      //   left: 35%;
-      //   right: 50%;
-      //   width: 100%;
-      // }
     }
   }
   & td {
@@ -160,6 +149,16 @@ table {
     padding: 0.65rem 0.25rem;
     // border-bottom: 1px solid rgba(255,255,255,0.5);
   }
+}
+.absolute-modal {
+  position: absolute;
+  color: $green;
+  width: 50vw;
+  height: 50vh;
+  top: 25vh;
+  left: 25vw;
+  transition: all .25s;
+  z-index: 99;
 }
 
 .product-card-add-to-cart {

@@ -1,5 +1,6 @@
 <template>
     <Section
+    id="productCardsSection"
       title="Available Upgrades"
       primaryColor="#76D311"
       secondaryColor="#FAD414"
@@ -18,7 +19,6 @@
       <div class="grid-container">
         <div
           class="product-container"
-          @click="expandCard($event)"
           v-for="(product, index) in productsByMake"
         >
           <ProductCard
@@ -110,11 +110,11 @@ export default {
             // This function (`page`) will get called for each page of records.
 
             records.forEach(function(record) {
-              console.log("Retrieved", record.get("id"));
-              console.log(record.fields);
+              // console.log("Retrieved", record.get("id"));
+              // console.log(record.fields);
               if (record.fields.id) {
                 self.productList.push(record.fields);
-                console.log(`Version: ${record.fields.version}`);
+                // console.log(`Version: ${record.fields.version}`);
               }
             });
 
@@ -133,8 +133,8 @@ export default {
         );
     },
     sortByMake() {
-      console.log(`this.productList: ${this.productList}`);
-      console.log(this.productList);
+      // console.log(`this.productList: ${this.productList}`);
+      // console.log(this.productList);
       this.productMakes = this.productList.map(product => {
         return product.make;
       });
@@ -143,15 +143,15 @@ export default {
     },
     modelsByMake() {
       this.productMakes.forEach((make, i) => {
-        console.log("modelsByMake()");
+        // console.log("modelsByMake()");
         let currentImg = this.productList[i].image[0].filename;
         this.images.push(currentImg);
-        console.log(this.productList[i].image[0].filename);
+        // console.log(this.productList[i].image[0].filename);
         let currentModels = [];
         let currentVersions = [];
         this.productList.forEach(product => {
           if (product.make === make) {
-            console.log(`Make ${make} matches`);
+            // console.log(`Make ${make} matches`);
             currentModels.push(`"${product.model}"`);
             if (product.version === undefined) {
               product.version = "N/A";
@@ -159,10 +159,10 @@ export default {
             currentVersions.push(`"${product.version}"`);
           }
         });
-        console.log(`{"${make}": {"models": [${currentModels}],}`);
-        currentModels.forEach(mod => {
-          console.log(mod);
-        });
+        // console.log(`{"${make}": {"models": [${currentModels}],}`);
+        // currentModels.forEach(mod => {
+        //   console.log(mod);
+        // });
         this.productsByMake.push(
           JSON.parse(`{"${make}": 
             {
@@ -188,6 +188,10 @@ export default {
 
 <style lang="scss">
 @import "../styles/app.scss";
+
+#productCardsSection {
+  z-index: 11;
+}
 
 .section-container.product-cards-section {
   border-top: none;

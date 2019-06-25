@@ -88,16 +88,13 @@ $bg-image: "./../assets/the-illusionist.png";
 $bg-repeat: repeat;
 
 .section-container {
+  z-index: 11;
   height: auto;
   display: flex;
   flex-direction: column;
-  // background: url($bg-image);
-  // background-image: linear-gradient(90deg, $section-color, rgba($graphite, 0.5), $section-color), url($bg-image);
-  // background-size: cover;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  // border-top: 3px solid $section-color; 
   padding: $section-padding 0;
   box-shadow: 0 0 10px 10px rgba($graphite, 0.75);
 }

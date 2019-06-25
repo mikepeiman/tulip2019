@@ -2,7 +2,7 @@
 <div id="app">
   <!-- <div class="body-bg"> -->
   <!-- </div> -->
-  <Nav />
+  <!-- <Nav /> -->
   <router-view />
 </div>
 </template>
@@ -80,17 +80,19 @@ body {
   // }
 
 
-$bg: "shattered-island.gif";
-    background-image: url("./assets/"+$bg);
+$bg: "the-illusionist.png";
+    background-image: linear-gradient(135deg, rgba(0,0,0,0.75) 15%,rgba(100,100,100,0.85) 47%,  rgba(0,0,0,0.75)), url("./assets/"+$bg);
     background-repeat: repeat;
     background-position: fixed;
     background-attachment: fixed;
+    // background-size: cover;
   // background-size: 50vh;
   @include media(">large") {
-    background-image: linear-gradient(135deg, rgba(0,0,0,0.75) 15%,rgba(100,100,100,0.55) 47%,  rgba(0,0,0,0.75)), url("./assets/"+$bg);
+    background-image: linear-gradient(135deg, rgba(0,0,0,0.5) 0%,rgba(0,0,0,.95) 30%, rgba(0,0,0,1) 50%,rgba(0,0,0,.95) 70%, rgba(0,0,0,0.5)), url("./assets/"+$bg);
     background-repeat: repeat;
-    background-position: fixed;
+    // background-position: bottom;
     background-attachment: fixed;
+    // background-size: cover;
   // background-size: 75vh;
   }
 }
