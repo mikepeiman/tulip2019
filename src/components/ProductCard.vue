@@ -43,18 +43,18 @@ export default {
 @import "../styles/app.scss";
 
 .product-card {
-  background: none;
+  background: rgba(0,0,0,0.25);
   color: $blue;
   border: 5px solid $blue-faint;
   border-radius: 3px;
   transition: all 0.25s;
   position: relative;
-  height: 100%;
+  height: 97.5%;
   transition: all .25s;
 
   &:hover {
     border: 5px solid $blue;
-    background: rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.5);
     transition: all 0.25s;
 
     & img {

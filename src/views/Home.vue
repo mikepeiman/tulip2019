@@ -5,7 +5,7 @@
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
     <ProductCardsSection/>
-        <Infosection
+    <Infosection
       title="Info Section"
       subtitle="Something Generic"
       content="This is the section content"
@@ -19,6 +19,41 @@
       :gradColor3="`${this.colors.gold}`"
       alpha="0.75"
       pos="bottom"
+      repeat="repeat"
+      borderWidth="3"
+    />
+    <Infosection
+      title="Info Section"
+      subtitle="Something Generic"
+      content="This is the section content"
+      :primaryColor="`${this.colors.tulip}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.blue}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.gold}`"
+      alpha="0.75"
+      pos="bottom"
+      :bg="getImgUrl(`wood_1.png`)"
+      repeat="repeat"
+      borderWidth="3"
+    />
+    <Infosection
+      title="Contact Us"
+      subtitle="Contact Form"
+      content="Contact Form Here"
+      :primaryColor="`${this.colors.altBlue}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.gold}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.altBlue}`"
+      alpha="0.75"
+      pos="bottom"
+      :bg="getImgUrl(`leather-nunchuck.png`)"
+      :images="this.images.panel3"
       repeat="repeat"
       borderWidth="3"
     />
@@ -75,41 +110,6 @@
       :bg="getImgUrl(`jade.jpg`)"
       :images="this.images.panel2"
       repeat="no-repeat"
-      borderWidth="3"
-    />
-    <Infosection
-      title="Contact Us"
-      subtitle="Contact Form"
-      content="Contact Form Here"
-      :primaryColor="`${this.colors.altBlue}`"
-      :secondaryColor="`${this.colors.gold}`"
-      :accentColor="`${this.colors.tulip}`"
-      :bgColor="`${this.colors.gold}`"
-      :gradColor1="`${this.colors.gold}`"
-      :gradColor2="`${this.colors.graphite}`"
-      :gradColor3="`${this.colors.altBlue}`"
-      alpha="0.75"
-      pos="bottom"
-      :bg="getImgUrl(`leather-nunchuck.png`)"
-      :images="this.images.panel3"
-      repeat="repeat"
-      borderWidth="3"
-    />
-    <Infosection
-      title="Info Section"
-      subtitle="Something Generic"
-      content="This is the section content"
-      :primaryColor="`${this.colors.tulip}`"
-      :secondaryColor="`${this.colors.gold}`"
-      :accentColor="`${this.colors.tulip}`"
-      :bgColor="`${this.colors.gold}`"
-      :gradColor1="`${this.colors.blue}`"
-      :gradColor2="`${this.colors.graphite}`"
-      :gradColor3="`${this.colors.gold}`"
-      alpha="0.75"
-      pos="bottom"
-      :bg="getImgUrl(`wood_1.png`)"
-      repeat="repeat"
       borderWidth="3"
     />
     <Infosection
@@ -199,9 +199,9 @@ export default {
         altBlue: "#0FC1FF"
       },
       images: {
-        "panel1": ["bg15.png", "canvas-orange.jpg", "DSC03208-forweb.jpg"],
-        "panel2": ["pcb-001.png", "pcb-006b.png", "pcb-009.png"],
-        "panel3": ["pcb-003.png", "pcb-004.png", "pcb-008b.png"],
+        panel1: ["bg15.png", "canvas-orange.jpg", "DSC03208-forweb.jpg"],
+        panel2: ["pcb-001.png", "pcb-006b.png", "pcb-009.png"],
+        panel3: ["pcb-003.png", "pcb-004.png", "pcb-008b.png"]
       }
     };
   },
@@ -211,8 +211,10 @@ export default {
     }
   },
   mounted() {
-    console.log('############################################## mounted() this.images')
-    console.log(this.images.panel1)
+    console.log(
+      "############################################## mounted() this.images"
+    );
+    console.log(this.images.panel1);
   }
 };
 </script>

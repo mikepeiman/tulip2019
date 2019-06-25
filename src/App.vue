@@ -72,11 +72,26 @@ body {
   text-align: center;
   color: #fff;
 
-  background: url("./assets/bg06.png") no-repeat 50% 20% fixed;
-  background-size: 50vh;
+  // background: url("./assets/bg06.png") no-repeat 50% 20% fixed;
+  // background-size: 50vh;
+  // @include media(">large") {
+  //   background: url("./assets/bg06.png") no-repeat 50% 0% fixed;
+  // background-size: 75vh;
+  // }
+
+
+$bg: "shattered-island.gif";
+    background-image: url("./assets/"+$bg);
+    background-repeat: repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+  // background-size: 50vh;
   @include media(">large") {
-    background: url("./assets/bg06.png") no-repeat 50% 0% fixed;
-  background-size: 75vh;
+    background-image: linear-gradient(135deg, rgba(0,0,0,0.75) 15%,rgba(100,100,100,0.55) 47%,  rgba(0,0,0,0.75)), url("./assets/"+$bg);
+    background-repeat: repeat;
+    background-position: fixed;
+    background-attachment: fixed;
+  // background-size: 75vh;
   }
 }
 </style>

@@ -181,7 +181,13 @@ $bg-repeat: repeat;
   width: 18vw;
   margin: 2rem;
   background-size: cover;
-  box-shadow: 0 0 9px 4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.75);
+  transition: all .25s;
+  &:hover {
+    transform: scale(1.06);
+    box-shadow: 0px 2px 8px 3px rgba(0, 0, 0, 0.9);
+    border: 3px solid inherit;
+  }
 }
 
 .triangle-container {
