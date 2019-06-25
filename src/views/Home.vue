@@ -33,6 +33,7 @@
       :gradColor1="`${this.colors.gold}`"
       :gradColor2="`${this.colors.graphite}`"
       :gradColor3="`${this.colors.tulip}`"
+      :images="this.images"
       alpha="0.75"
       pos="bottom"
       :bg="getImgUrl(`wild-sea.png`)"
@@ -73,7 +74,7 @@
       repeat="repeat"
       borderWidth="3"
     />
-      <Infosection
+    <Infosection
       title="Info Section"
       subtitle="Something Generic"
       content="This is the section content"
@@ -175,7 +176,8 @@ export default {
         gold: "#fad414",
         graphite: "#252525",
         altBlue: "#0FC1FF"
-      }
+      },
+      images: ["bg15.png", "canvas-orange.jpg", "DSC03208-forweb.jpg"]
     };
   },
   methods: {

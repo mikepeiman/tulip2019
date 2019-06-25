@@ -1,18 +1,20 @@
 <template>
-<div class="section-container" :style="containerStyle">
-  <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
-  <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
-  <div class="triangle-container" :style="contentStyle">
-    <p class="section-content">{{ content }}</p>
-    <div class="css-triangle" :style="triangleStyle">
+  <div class="section-container" :style="containerStyle">
+    <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
+    <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
+    <div class="triangle-container" :style="contentStyle">
+      <p class="section-content">{{ content }}</p>
+      <div class="css-triangle" :style="triangleStyle"></div>
+    </div>
+    <slot></slot>
+    <div class="image-container" v-if="images">
+      <div class="section-image"  v-for="image in images" :style="`background-image: url(${getImgUrl(image)});`" width="200" height="auto"></div>
     </div>
   </div>
-  <slot></slot>
-</div>
 </template>
 
 <script>
-import hexToRgba from 'hex-to-rgba';
+import hexToRgba from "hex-to-rgba";
 
 export default {
   name: "Infosection",
@@ -31,7 +33,8 @@ export default {
     alpha: String,
     repeat: String,
     borderWidth: String,
-    pos: String
+    pos: String,
+    images: Array
   },
   components: {},
   data() {
@@ -40,7 +43,13 @@ export default {
   computed: {
     containerStyle() {
       return `
-      background-image: linear-gradient(45deg, ${this.convert(this.gradColor1, this.alpha)}, ${this.convert(this.gradColor2, this.alpha)}, ${this.convert(this.gradColor3, this.alpha)}), url(${this.bg});
+      background-image: linear-gradient(45deg, ${this.convert(
+        this.gradColor1,
+        this.alpha
+      )}, ${this.convert(this.gradColor2, this.alpha)}, ${this.convert(
+        this.gradColor3,
+        this.alpha
+      )}), url(${this.bg});
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
@@ -73,12 +82,12 @@ export default {
       return require("./../assets/" + bg);
     },
     convert(color, alpha) {
-      return hexToRgba(color, alpha)
+      return hexToRgba(color, alpha);
     }
   },
-  mounted: function () {
+  mounted: function() {
     console.log("Infosection mounted");
-    console.log(this.convert(this.bgColor, 0.5))
+    console.log(this.convert(this.bgColor, 0.5));
   }
 };
 </script>
@@ -107,10 +116,10 @@ $bg-repeat: repeat;
   // background-size: 125%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  // border-bottom: 3px solid $section-color; 
+  // border-bottom: 3px solid $section-color;
   padding: $section-padding 0;
   // margin: 1rem 0;
-  box-shadow: 0 0 10px 3px rgba(0,0,0,0.75);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.75);
   scroll-behavior: smooth;
 }
 
@@ -129,6 +138,7 @@ $bg-repeat: repeat;
   justify-self: flex-start;
   // border-bottom: 3px solid $contrast-color;
 }
+
 .section-subtitle {
   font-family: "Montserrat";
   grid-area: title;
@@ -140,6 +150,21 @@ $bg-repeat: repeat;
   border: 3px solid $contrast-color;
   background: $graphite;
   width: max-content;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100vw;
+  background: rgba(0,0,0,0.5);
+
+}
+
+.section-image {
+  height: 20vw;
+  width: 20vw;
+  margin: 2rem;
 }
 
 .triangle-container {

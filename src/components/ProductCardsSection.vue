@@ -5,13 +5,13 @@
       secondaryColor="#FAD414"
       accentColor="#252525"
       bgColor="#252525"
-      alpha="0.5"
+      alpha="0.65"
       pos="bottom"
-      :bg="getImgUrl(`ocean.jpg`)"
+      :bg="getImgUrl(`kale-salad.jpg`)"
       repeat="repeat"
       borderWidth="3">
 
-<div class="section-container product-cards-section">
+<!-- <div class="section-container product-cards-section"> -->
 
       
     <div class="product-cards-section">
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  </div>
+  <!-- </div> -->
     </Section>
 </template>
 
