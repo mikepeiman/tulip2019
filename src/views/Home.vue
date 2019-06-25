@@ -5,6 +5,23 @@
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
     <ProductCardsSection/>
+        <Infosection
+      title="Info Section"
+      subtitle="Something Generic"
+      content="This is the section content"
+      :primaryColor="`${this.colors.gold}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :overlay="false"
+      :gradColor1="`${this.colors.blue}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.gold}`"
+      alpha="0.75"
+      pos="bottom"
+      repeat="repeat"
+      borderWidth="3"
+    />
     <Infosection
       title="Info Section"
       subtitle="Something Generic"
@@ -17,6 +34,7 @@
       :gradColor2="`${this.colors.graphite}`"
       :gradColor3="`${this.colors.gold}`"
       alpha="0.75"
+      :overlay="true"
       pos="bottom"
       :bg="getImgUrl(`the-illusionist.png`)"
       repeat="repeat"

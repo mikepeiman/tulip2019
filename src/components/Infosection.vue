@@ -1,11 +1,12 @@
 <template>
-  <div class="section-container" :style="containerStyle">
+  <div class="section-container" :style="overlay ? containerStyle : containerClearStyle">
     <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
     <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
     <div class="triangle-container" :style="contentStyle">
       <p class="section-content">{{ content }}</p>
       <div class="css-triangle" :style="triangleStyle"></div>
     </div>
+    <!-- </div> -->
     <slot></slot>
     <div class="image-container" v-if="images">
       <div class="section-image"  v-for="image in images" :style="`background-image: url(${getImgUrl(image)});`" width="200" height="auto"></div>
@@ -34,7 +35,8 @@ export default {
     repeat: String,
     borderWidth: String,
     pos: String,
-    images: Array
+    images: Array,
+    overlay: Boolean
   },
   components: {},
   data() {
@@ -50,6 +52,12 @@ export default {
         this.gradColor3,
         this.alpha
       )}), url(${this.bg});
+      border-top: ${this.borderWidth}px solid ${this.primaryColor};
+      `;
+    },
+    containerClearStyle() {
+      return `
+      background-image: url(${this.bg});
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
