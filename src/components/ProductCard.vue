@@ -1,18 +1,22 @@
 <template>
-<div class="product-card">
-  <div class="product-card-image">
-    <img class="product-card-img" :src="img">
-    <h1 class="product-card-title test1 test2">{{ make[0] }}</h1>
+  <div class="product-card">
+    <div class="product-card-image">
+      <img class="product-card-img" :src="img">
+      <h1 class="product-card-title test1 test2">{{ make[0] }}</h1>
     </div>
     <table class="product-details">
       <thead>
         <th class="table-heading">Models</th>
         <th class="table-heading">Versions</th>
+        <th class="table-button">Buy Now</th>
       </thead>
       <tbody>
         <tr v-for="(model, i) in products.models">
           <td class="table-item model">{{ model }}</td>
           <td class="table-item version">{{ products.versions[i] }}</td>
+          <td class="table-item">
+            <button class="product-card-add-to-cart">Add To Cart</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -26,7 +30,7 @@ export default {
     make: Array,
     index: Number,
     img: String,
-    products: Object,
+    products: Object
   },
   data() {
     return {
@@ -43,14 +47,14 @@ export default {
 @import "../styles/app.scss";
 
 .product-card {
-  background: rgba(0,0,0,0.25);
+  background: rgba(0, 0, 0, 0.25);
   color: $blue;
   border: 5px solid $blue-faint;
   border-radius: 3px;
   transition: all 0.25s;
   position: relative;
   height: 97.5%;
-  transition: all .25s;
+  transition: all 0.25s;
 
   &:hover {
     border: 5px solid $blue;
@@ -61,9 +65,9 @@ export default {
       opacity: 1;
     }
     & .product-card-title {
-      color: $green;
+      color: white;
       border-bottom: 3px solid $blue; //change-color($blue, $lightness: 40%, $alpha: .5);
-      transition: all .25s;
+      transition: all 0.25s;
     }
   }
 
@@ -88,13 +92,13 @@ export default {
 }
 
 .product-card-title {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-size: 1.5rem;
   margin: 0;
-  padding: .25rem;
+  padding: 0.25rem;
   color: change-color($blue, $lightness: 50%, $alpha: 1);
-  border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
-  transition: all .25s;
+  border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: 0.5);
+  transition: all 0.25s;
 }
 
 .product-details {
@@ -104,32 +108,81 @@ export default {
   margin: 0.5rem;
   color: white;
   font-weight: 300;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
 
   & h3 {
     color: $green;
   }
-
 }
 
 table {
+  border-spacing: 1px;
+  transition: all 0.25s;
+  &:hover {
+    & th:last-of-type {
+      display: block;
+      opacity: 1;
+      width: auto;
+    }
+    & tr {
+      // transform: scale(1.03);
+    }
+    & td:last-of-type {
+      display: block;
+      opacity: 1;
+      width: auto;
+    }
+  }
   & thead {
-    padding: .5rem;
+    padding: 0.5rem;
   }
   & th {
-    padding: .65rem 0;
+    padding: 0.65rem 0;
   }
   & tr {
     width: 100%;
-    
+    transition: all 0.25s;
+    &:hover {
+      background: change-color($blue, $lightness: 45%, $alpha: 1);
+      transform: scale(1.02);
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
+      border-spacing: 2px 6px;
+      height: 150%;
+      & .table-item:last-of-type {
+        display: block;
+      }
+      & .product-card-add-to-cart {
+        background: white;
+      }
+      // & :before {
+      //   content: "BUY NOW";
+      //   position: absolute;
+      //   background: $graphite;
+      //   padding: .15rem;
+      //   border: 1px solid $green;
+      //   top: -1rem;
+      //   left: 35%;
+      //   right: 50%;
+      //   width: 100%;
+      // }
+    }
   }
   & td {
     width: 50%;
-    padding: .65rem .25rem;
+    padding: 0.65rem 0.25rem;
     // border-bottom: 1px solid rgba(255,255,255,0.5);
   }
 }
 
+.product-card-add-to-cart {
+  width: 8ch;
+  height: 6ch;
+  padding: 0.25rem;
+  background: $blue;
+  margin: 0;
+  border: none;
+  align-self: stretch;
+}
 .img-overlay {
   background: linear-gradient(45deg, rgba($blue, 0.5), rgba($graphite, 0.5));
   padding: 0;
@@ -146,7 +199,12 @@ table {
 
 .table-heading {
   // border-bottom: 3px solid rgba($blue,0.5);
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
+}
+
+.table-button {
+  opacity: 0;
+  width: 0;
 }
 
 tr:first-of-type {
@@ -154,7 +212,15 @@ tr:first-of-type {
 }
 .table-item {
   // border-bottom: 1px solid rgba(255,255,255,0.5);
-  background: change-color($blue, $lightness: 40%, $alpha: .5);
+  background: change-color($blue, $lightness: 40%, $alpha: 0.5);
+  transition: all 0.25s;
+  // &:hover {
+  //   background: change-color($blue, $lightness: 45%, $alpha: 1);
+  // }
+  &:last-of-type {
+    opacity: 0;
+    width: 0;
+  }
 }
 
 .inner-grid-item {
