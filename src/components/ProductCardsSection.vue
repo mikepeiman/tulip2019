@@ -5,9 +5,9 @@
       secondaryColor="#FAD414"
       accentColor="#252525"
       bgColor="#252525"
-      alpha="0.95"
+      alpha="0.5"
       pos="bottom"
-      :bg="getImgUrl(`the-illusionist.png`)"
+      :bg="getImgUrl(`ocean.jpg`)"
       repeat="repeat"
       borderWidth="3">
 

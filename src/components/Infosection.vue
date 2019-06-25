@@ -24,6 +24,9 @@ export default {
     secondaryColor: String,
     accentColor: String,
     bgColor: String,
+    gradColor1: String,
+    gradColor2: String,
+    gradColor3: String,
     bg: String,
     alpha: String,
     repeat: String,
@@ -37,7 +40,7 @@ export default {
   computed: {
     containerStyle() {
       return `
-      background-image: linear-gradient(45deg, ${this.convert(this.accentColor, this.alpha)}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
+      background-image: linear-gradient(45deg, ${this.convert(this.gradColor1, this.alpha)}, ${this.convert(this.gradColor2, this.alpha)}, ${this.convert(this.gradColor3, this.alpha)}), url(${this.bg});
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
@@ -101,12 +104,14 @@ $bg-repeat: repeat;
   // background-image: linear-gradient(90deg, $section-color, rgba($graphite, 0.5), $section-color), url($bg-image);
   // background-size: cover;
   background-position: 50% 20%;
+  // background-size: 125%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
   // border-bottom: 3px solid $section-color; 
   padding: $section-padding 0;
   // margin: 1rem 0;
   box-shadow: 0 0 10px 3px rgba(0,0,0,0.75);
+  scroll-behavior: smooth;
 }
 
 .section-title {
