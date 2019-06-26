@@ -1,12 +1,13 @@
 <template>
   <div class="home" id="section-home">
     <HeroHome
+
       title="Tulip Electronics Inc"
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
-    <ProductCardsSection id="section-cards"/>
-
+    <ProductCardsSection class="scroll" id="section-cards"/>
     <Infosection
+
       id="section-products"
       title="Products"
       subtitle="All Our Memory Upgrades"
@@ -27,6 +28,7 @@
       borderWidth="3"
     />
     <Infosection
+
       id="section-about"
       title="About Us"
       subtitle="A Family Business For Over Thirty Years"
@@ -47,7 +49,8 @@
       borderWidth="3"
     />
     <Infosection
-    id="section-contact"
+
+      id="section-contact"
       title="Contact Us"
       subtitle="Contact Form"
       content="Contact Form Here"
@@ -80,7 +83,7 @@ import SignUp from "@/components/SignUp.vue";
 import Boilerplate from "@/components/Boilerplate.vue";
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     HeroHome,
     ProductCardsSection,

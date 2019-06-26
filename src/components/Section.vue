@@ -38,7 +38,6 @@ export default {
         this.accentColor,
         this.alpha
       )}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
-      border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
     titleStyle() {
@@ -106,7 +105,7 @@ $bg-repeat: repeat;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  padding: $section-padding 0;
+  // padding: $section-padding 0;
   box-shadow: 0 0 10px 10px rgba($graphite, 0.75);
 }
   // ************* use the following to offset main content by 10vw for nav

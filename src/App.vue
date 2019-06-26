@@ -3,7 +3,9 @@
     <!-- <div class="body-bg"></div> -->
     <Nav/>
     <div class="main">
-      <router-view/>
+      <transition :name="transitionName" mode="out-in">
+        <router-view/>
+      </transition>
     </div>
   </div>
 </template>
@@ -19,39 +21,52 @@ export default {
   },
   data() {
     return {
-      productList: []
+      productList: [],
+      transitionName: 'slide',
     };
   },
-  methods: {
-    getImgUrl(img) {
-      return require(img);
-    },
-    getData: function() {
-      var Airtable = require("airtable");
-      axios({
-        url: this.apiUrl + this.base + "/Menu?view=Grid%20view",
-        headers: {
-          Authorization: `Bearer ${this.apiKey}`
-        }
-      }).then(res => {
-        this.records = res.data.records;
-        console.log(this.records);
+  created() {
+    this.$router.beforeEach((to, from, next) => {
+          let transitionName = to.meta.transitionName || from.meta.transitionName;
+          if (transitionName === 'slide') {
+            const toDepth = to.path.split('/').length;
+            const fromDepth = from.path.split('/').length;
+            transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
+            this.transitionName = transitionName || DEFAULT_TRANSITION;
+            next();
+          };
       });
-    },
-    logData() {
-      console.log(`this.productList: ${this.productList}`);
-      console.log(this.productList);
-    },
-    scrollFix: function(hashbang) {
-      location.href = hashbang;
-    }
   },
-  mounted: function() {
-    if (this.$route.hash) {
-      setTimeout(() => this.scrollTo(this.$route.hash), TIMEOUT);
-    }
-  }
-};
+      methods: {
+        getImgUrl(img) {
+          return require(img);
+        },
+        getData: function () {
+          var Airtable = require("airtable");
+          axios({
+            url: this.apiUrl + this.base + "/Menu?view=Grid%20view",
+            headers: {
+              Authorization: `Bearer ${this.apiKey}`
+            }
+          }).then(res => {
+            this.records = res.data.records;
+            console.log(this.records);
+          });
+        },
+        logData() {
+          console.log(`this.productList: ${this.productList}`);
+          console.log(this.productList);
+        },
+        scrollFix: function (hashbang) {
+          location.href = hashbang;
+        }
+      },
+      mounted: function () {
+        if (this.$route.hash) {
+          setTimeout(() => this.scrollFix(this.$route.hash), 1);
+        }
+      }
+  };
 </script>
 
 <style lang="scss">
@@ -86,9 +101,11 @@ body {
   & .main {
     grid-area: main;
   }
+
   & nav {
     grid-area: nav;
   }
+
   $bg: "the-illusionist.png";
   background-image: linear-gradient(
       135deg,
@@ -100,6 +117,7 @@ body {
   background-repeat: repeat;
   background-position: fixed;
   background-attachment: fixed;
+
   // background-size: cover;
   // background-size: 50vh;
   @include media(">large") {
@@ -118,5 +136,39 @@ body {
     // background-size: cover;
     // background-size: 75vh;
   }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition-duration: 0.3s;
+  transition-property: opacity;
+  transition-timing-function: ease;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0;
+}
+
+.slide-left-enter-active,
+.slide-left-leave-active,
+.slide-right-enter-active,
+.slide-right-leave-active {
+  transition-duration: 0.5s;
+  transition-property: height, opacity, transform;
+  transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
+  overflow: hidden;
+}
+
+.slide-left-enter,
+.slide-right-leave-active {
+  opacity: 0;
+  transform: translate(100vw, 0);
+}
+
+.slide-left-leave-active,
+.slide-right-enter {
+  opacity: 0;
+  transform: translate(-100vw, 0);
 }
 </style>

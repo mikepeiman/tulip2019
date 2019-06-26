@@ -55,13 +55,11 @@ export default {
         this.gradColor3,
         this.alpha
       )}), url(${this.bg});
-      border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
     containerClearStyle() {
       return `
       background-image: url(${this.bg});
-      border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
     titleStyle() {
@@ -134,7 +132,7 @@ $bg-repeat: repeat;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  padding: $section-padding 0;
+  // padding: $section-padding 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.75);
   scroll-behavior: smooth;
 }

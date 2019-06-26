@@ -10,39 +10,36 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home
+      component: Home,
+      meta: { transitionName: 'slide' }
     },
     {
-      path: '/home-2',
-      name: 'home-2',
+      path: '/home2',
+      name: 'home2',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/Home-2.vue')
+      // component: Home2,
+      component: () => import(/* webpackChunkName: "about" */ './views/Home2.vue'),
+      meta: { transitionName: 'slide' }
     },
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      component: () => import(/* webpackChunkName: "about" */ './views/About.vue'),
+      meta: { transitionName: 'slide' }
     },
     {
       path: '/contact',
       name: 'contact',
-      // route level code-splitting
-      // this generates a separate chunk (contact.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue')
+      component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue'),
+      meta: { transitionName: 'slide' }
     },
     {
       path: '/products',
       name: 'products',
-      // route level code-splitting
-      // this generates a separate chunk (products.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "products" */ './views/Products.vue')
+      component: () => import(/* webpackChunkName: "products" */ './views/Products.vue'),
+      meta: { transitionName: 'slide' }
     }
   ]
 })

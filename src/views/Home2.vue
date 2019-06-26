@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <HeroHome
+    <!-- <HeroHome
       title="Tulip Electronics Inc"
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
-    />
+    /> -->
     <ProductCardsSection/>
     <Infosection
       title="Info Section"
@@ -179,7 +179,7 @@ import SignUp from "@/components/SignUp.vue";
 import Boilerplate from "@/components/Boilerplate.vue";
 
 export default {
-  name: "home-2",
+  name: "Home2",
   components: {
     HeroHome,
     ProductCardsSection,
