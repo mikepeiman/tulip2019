@@ -1,15 +1,18 @@
 <template>
   <div class="section-container" :style="overlay ? containerStyle : containerClearStyle">
-    <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
-    <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
-    <div class="triangle-container" :style="contentStyle">
-      <p class="section-content">{{ content }}</p>
-      <div class="css-triangle" :style="triangleStyle"></div>
-    </div>
-    <!-- </div> -->
-    <slot></slot>
-    <div class="image-container" v-if="images">
-      <div class="section-image" v-for="image in images" :style="imageStyle(image)"></div>
+    <div class="section-nav-spacer"></div>
+    <div class="section-main">
+      <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
+      <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
+      <div class="triangle-container" :style="contentStyle">
+        <p class="section-content">{{ content }}</p>
+        <div class="css-triangle" :style="triangleStyle"></div>
+      </div>
+      <!-- </div> -->
+      <slot></slot>
+      <div class="image-container" v-if="images">
+        <div class="section-image" v-for="image in images" :style="imageStyle(image)"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -83,8 +86,7 @@ export default {
       return `
       border-${this.pos}-color: ${this.primaryColor};
       `;
-    },
-
+    }
   },
   methods: {
     getImgUrl(bg) {
@@ -123,20 +125,31 @@ $bg-repeat: repeat;
 .section-container {
   height: 100vh;
   display: flex;
+  // ************* use the following to offset main content by 10vw for nav
+  //
+  // display: grid;
+  // grid-template-columns: [nav] 10vw [main] 90vw;
+  // ************* END
   flex-direction: column;
-  // background: url($bg-image);
-  // background-image: linear-gradient(90deg, $section-color, rgba($graphite, 0.5), $section-color), url($bg-image);
-  // background-size: cover;
   background-position: 50% 20%;
-  // background-size: 125%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
-  // border-bottom: 3px solid $section-color;
   padding: $section-padding 0;
-  // margin: 1rem 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.75);
   scroll-behavior: smooth;
 }
+
+// ************* use the following to offset main content by 10vw for nav
+.nav-spacer {
+  grid-area: nav;
+}
+
+.section-main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+}
+// ************* END
 
 .section-title {
   font-family: "Montserrat";
@@ -171,7 +184,7 @@ $bg-repeat: repeat;
   display: flex;
   flex-direction: row;
   position: relative;
-  
+
   //  this was the problem below - this expanded beyond the body
   // width: 100vw;
   justify-content: center;
@@ -184,7 +197,7 @@ $bg-repeat: repeat;
   margin: 2rem;
   background-size: cover;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.75);
-  transition: all .25s;
+  transition: all 0.25s;
   &:hover {
     transform: scale(1.06);
     box-shadow: 0px 2px 8px 3px rgba(0, 0, 0, 0.9);

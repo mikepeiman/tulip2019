@@ -1,12 +1,15 @@
 <template>
-<div class="section-container" :style="containerStyle">
-  <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
-  <slot></slot>
-</div>
+  <div class="section-container" :style="containerStyle">
+    <div class="section-nav-spacer"></div>
+    <div class="section-main">
+      <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
+      <slot></slot>
+    </div>
+  </div>
 </template>
 
 <script>
-import hexToRgba from 'hex-to-rgba';
+import hexToRgba from "hex-to-rgba";
 
 export default {
   name: "Section",
@@ -31,7 +34,10 @@ export default {
   computed: {
     containerStyle() {
       return `
-      background-image: linear-gradient(45deg, ${this.convert(this.accentColor, this.alpha)}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
+      background-image: linear-gradient(45deg, ${this.convert(
+        this.accentColor,
+        this.alpha
+      )}, ${this.convert(this.bgColor, this.alpha)}), url(${this.bg});
       border-top: ${this.borderWidth}px solid ${this.primaryColor};
       `;
     },
@@ -64,12 +70,12 @@ export default {
       return require("./../assets/" + bg);
     },
     convert(color, alpha) {
-      return hexToRgba(color, alpha)
+      return hexToRgba(color, alpha);
     }
   },
-  mounted: function () {
+  mounted: function() {
     console.log("Infosection mounted");
-    console.log(this.convert(this.bgColor, 0.5))
+    console.log(this.convert(this.bgColor, 0.5));
   }
 };
 </script>
@@ -91,6 +97,11 @@ $bg-repeat: repeat;
   z-index: 11;
   height: auto;
   display: flex;
+  // ************* use the following to offset main content by 10vw for nav
+  //
+  // display: grid;
+  // grid-template-columns: [nav] 10vw [main] 90vw;
+  // ************* END
   flex-direction: column;
   background-position: 50% 20%;
   background-attachment: fixed;
@@ -98,7 +109,17 @@ $bg-repeat: repeat;
   padding: $section-padding 0;
   box-shadow: 0 0 10px 10px rgba($graphite, 0.75);
 }
+  // ************* use the following to offset main content by 10vw for nav
+.nav-spacer {
+  grid-area: nav;
+}
 
+.section-main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+}
+// *************** END
 .section-title {
   font-family: "Montserrat";
   grid-area: title;
