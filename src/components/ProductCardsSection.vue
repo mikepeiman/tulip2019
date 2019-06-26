@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <!-- </div> -->
+
     </Section>
 </template>
 
@@ -189,14 +189,10 @@ export default {
 <style lang="scss">
 @import "../styles/app.scss";
 
-#productCardsSection {
-  z-index: 11;
-}
-
 .section-container.product-cards-section {
   border-top: none;
   padding: 2rem 0;
-    display: flex;
+    // display: flex;
   flex-direction: column;
 }
 
