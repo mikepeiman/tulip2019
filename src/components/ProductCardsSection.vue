@@ -6,7 +6,7 @@
       secondaryColor="#FAD414"
       accentColor="#252525"
       bgColor="#252525"
-      alpha="0.65"
+      alpha="0.35"
       pos="bottom"
       :bg="getImgUrl(`kale-salad.jpg`)"
       repeat="repeat"

@@ -95,7 +95,7 @@ $bg-repeat: repeat;
 
 .section-container {
   z-index: 11;
-  height: auto;
+  height: 100vh;
   display: flex;
   // ************* use the following to offset main content by 10vw for nav
   //

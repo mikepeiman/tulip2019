@@ -1,21 +1,21 @@
 <template>
   <div class="home">
-    <Infosection
-      title="About Us"
-      subtitle="A Family Business For Over Thirty Years"
-      content="We've Got Your Back(ups)"
-      :primaryColor="`${this.colors.tulip}`"
+     <Infosection
+      title="Products"
+      subtitle="All Our Memory Upgrades"
+      content="Check It Out"
+      :primaryColor="`${this.colors.altBlue}`"
       :secondaryColor="`${this.colors.gold}`"
       :accentColor="`${this.colors.tulip}`"
       :bgColor="`${this.colors.gold}`"
-      :gradColor1="`${this.colors.graphite}`"
-      :gradColor2="`${this.colors.gold}`"
-      :gradColor3="`${this.colors.tulip}`"
-      :images="this.images.panel1"
+      :gradColor1="`${this.colors.tulip}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.altBlue}`"
       alpha="0.75"
       pos="bottom"
-      :bg="getImgUrl(`wild-sea.png`)"
-      :overlay="true"
+      :bg="getImgUrl(`leather-nunchuck.png`)"
+      overlay="true"
+      :images="this.images.panel3"
       repeat="repeat"
       borderWidth="3"
     />
@@ -28,7 +28,7 @@ import Infosection from "@/components/Infosection.vue";
 import Footer from "@/components/Footer.vue";
 
 export default {
-  name: "About",
+  name: "Products",
   components: {
     Infosection,
     Footer,

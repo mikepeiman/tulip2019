@@ -41,13 +41,15 @@ export default {
     logData() {
       console.log(`this.productList: ${this.productList}`);
       console.log(this.productList);
+    },
+    scrollFix: function(hashbang) {
+      location.href = hashbang;
     }
   },
   mounted: function() {
-    // this.getData2();
-    // setTimeout(() => {
-    //   this.logData();
-    // }, 500);
+    if (this.$route.hash) {
+      setTimeout(() => this.scrollTo(this.$route.hash), TIMEOUT);
+    }
   }
 };
 </script>

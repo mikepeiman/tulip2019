@@ -179,7 +179,7 @@ import SignUp from "@/components/SignUp.vue";
 import Boilerplate from "@/components/Boilerplate.vue";
 
 export default {
-  name: "home",
+  name: "home-2",
   components: {
     HeroHome,
     ProductCardsSection,

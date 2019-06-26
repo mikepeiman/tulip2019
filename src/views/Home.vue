@@ -1,29 +1,53 @@
 <template>
-  <div class="home">
+  <div class="home" id="section-home">
     <HeroHome
       title="Tulip Electronics Inc"
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
-        <Infosection
-      title="Info Section"
-      subtitle="Something Generic"
-      content="This is the section content"
+    <ProductCardsSection id="section-cards"/>
+
+    <Infosection
+      id="section-products"
+      title="Products"
+      subtitle="All Our Memory Upgrades"
+      content="Check It Out"
       :primaryColor="`${this.colors.tulip}`"
       :secondaryColor="`${this.colors.gold}`"
       :accentColor="`${this.colors.tulip}`"
       :bgColor="`${this.colors.gold}`"
-      :gradColor1="`${this.colors.altBlue}`"
-      :gradColor2="`${this.colors.graphite}`"
-      :gradColor3="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.graphite}`"
+      :gradColor2="`${this.colors.gold}`"
+      :gradColor3="`${this.colors.tulip}`"
+      :images="this.images.panel1"
       alpha="0.75"
       pos="bottom"
-      :bg="getImgUrl(`jade.jpg`)"
-      :images="this.images.panel2"
-      repeat="no-repeat"
+      :bg="getImgUrl(`wild-sea.png`)"
+      :overlay="true"
+      repeat="repeat"
       borderWidth="3"
     />
-    <ProductCardsSection/>
-        <Infosection
+    <Infosection
+      id="section-about"
+      title="About Us"
+      subtitle="A Family Business For Over Thirty Years"
+      content="We've Got Your Back(ups)"
+      :primaryColor="`${this.colors.altBlue}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.tulip}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.altBlue}`"
+      alpha="0.75"
+      pos="bottom"
+      :bg="getImgUrl(`leather-nunchuck.png`)"
+      overlay="true"
+      :images="this.images.panel3"
+      repeat="repeat"
+      borderWidth="3"
+    />
+    <Infosection
+    id="section-contact"
       title="Contact Us"
       subtitle="Contact Form"
       content="Contact Form Here"
@@ -34,27 +58,10 @@
       :gradColor1="`${this.colors.tulip}`"
       :gradColor2="`${this.colors.graphite}`"
       :gradColor3="`${this.colors.altBlue}`"
-      alpha="0.25"
+      alpha="0.5"
       pos="bottom"
       :bg="getImgUrl(`crossed_stripes.png`)"
       repeat="repeat"
-      borderWidth="3"
-    />
-  <Infosection
-      title="Info Section"
-      subtitle="Something Generic"
-      content="This is the section content"
-      :primaryColor="`${this.colors.altBlue}`"
-      :secondaryColor="`${this.colors.gold}`"
-      :accentColor="`${this.colors.tulip}`"
-      :bgColor="`${this.colors.gold}`"
-      :gradColor1="`${this.colors.altBlue}`"
-      :gradColor2="`${this.colors.graphite}`"
-      :gradColor3="`${this.colors.gold}`"
-      alpha="0.25"
-      pos="bottom"
-      :bg="getImgUrl(`tactile_noise.png`)"
-      repeat="no-repeat"
       borderWidth="3"
     />
   </div>
