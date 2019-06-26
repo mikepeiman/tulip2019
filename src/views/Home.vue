@@ -4,8 +4,59 @@
       title="Tulip Electronics Inc"
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
+        <Infosection
+      title="Info Section"
+      subtitle="Something Generic"
+      content="This is the section content"
+      :primaryColor="`${this.colors.tulip}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.altBlue}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.gold}`"
+      alpha="0.75"
+      pos="bottom"
+      :bg="getImgUrl(`jade.jpg`)"
+      :images="this.images.panel2"
+      repeat="no-repeat"
+      borderWidth="3"
+    />
     <ProductCardsSection/>
-
+        <Infosection
+      title="Contact Us"
+      subtitle="Contact Form"
+      content="Contact Form Here"
+      :primaryColor="`${this.colors.altBlue}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.tulip}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.altBlue}`"
+      alpha="0.25"
+      pos="bottom"
+      :bg="getImgUrl(`crossed_stripes.png`)"
+      repeat="repeat"
+      borderWidth="3"
+    />
+  <Infosection
+      title="Info Section"
+      subtitle="Something Generic"
+      content="This is the section content"
+      :primaryColor="`${this.colors.altBlue}`"
+      :secondaryColor="`${this.colors.gold}`"
+      :accentColor="`${this.colors.tulip}`"
+      :bgColor="`${this.colors.gold}`"
+      :gradColor1="`${this.colors.altBlue}`"
+      :gradColor2="`${this.colors.graphite}`"
+      :gradColor3="`${this.colors.gold}`"
+      alpha="0.25"
+      pos="bottom"
+      :bg="getImgUrl(`tactile_noise.png`)"
+      repeat="no-repeat"
+      borderWidth="3"
+    />
   </div>
 </template>
 

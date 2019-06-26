@@ -171,7 +171,9 @@ $bg-repeat: repeat;
   display: flex;
   flex-direction: row;
   position: relative;
-  width: 100vw;
+  
+  //  this was the problem below - this expanded beyond the body
+  // width: 100vw;
   justify-content: center;
   // background: rgba(0,0,0,0.5);
 }

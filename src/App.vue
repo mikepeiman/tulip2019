@@ -62,7 +62,7 @@ h1 {
 body {
   margin: 0;
   height: 100vh;
-  width: 100vw;
+  // width: calc(100vw - 16.8px);
   background: #161616;
 }
 
