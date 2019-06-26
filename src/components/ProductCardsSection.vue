@@ -196,19 +196,23 @@ export default {
   flex-direction: column;
 }
 
+#productCardsSection {
+  display: grid;
+  // grid-template-columns: 10vw 90vw;
+}
 .product-cards-section {
   display: grid;
-  grid-template-columns: [space] 0fr [content] 1fr [space] 0fr;
+  grid-template-columns: 10vw [space] 0fr [content] 1fr [space] 0fr;
   grid-template-rows: auto;
   gap: 2rem;
 
   @include media(">large") {
-    grid-template-columns: 1fr [content] 10fr 1fr;
+    grid-template-columns: 10vw 1fr [content] 10fr 1fr;
     gap: 2.5rem;
   }
 
   @include media(">xl") {
-    grid-template-columns: 1fr [content] 5fr 1fr;
+    grid-template-columns: 10vw 1fr [content] 5fr 1fr;
     gap: 3rem;
   }
 }

@@ -21,6 +21,7 @@ export default {
 @import "../styles/app.scss";
 
 #nav {
+  z-index: 99;
   padding: 20px;
   color: rgba(0,0,0,0);
   // background: rgba(0,0,0,0.25);
