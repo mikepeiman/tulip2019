@@ -1,5 +1,5 @@
 <template>
-  <div class="section-container" :style="overlay ? containerStyle : containerClearStyle">
+  <div class="section-container parallax" :style="overlay ? containerStyle : containerClearStyle">
     <div class="section-nav-spacer"></div>
     <div class="section-main">
       <h1 class="section-title" :style="titleStyle">{{ title }}</h1>

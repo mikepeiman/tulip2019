@@ -11,9 +11,9 @@
   <div class="nav-inner">
     <h2 style="color: white;">Single Page by ID</h2>
     <router-link class="scroll" to="#section-home">Home</router-link>
-    <router-link class="scroll" to="#section-cards" >Cards</router-link>
-    <router-link class="scroll" to="#section-products" >Products</router-link>
-    <router-link class="scroll" to="#section-about" >About</router-link>
+    <router-link class="scroll" to="#section-cards">Cards</router-link>
+    <router-link class="scroll" to="#section-products">Products</router-link>
+    <router-link class="scroll" to="#section-about">About</router-link>
     <router-link class="scroll" to="#section-contact">Contact</router-link>
   </div>
 </div>
@@ -26,9 +26,11 @@ export default {
     msg: String
   },
   methods: {
-    hello: function() {
-      alert('hello!')
-      console.log('****************************** hello! ***********************************')
+    hello: function () {
+      alert("hello!");
+      console.log(
+        "****************************** hello! ***********************************"
+      );
     },
     scrollFix: function (hashbang) {
       location.href = hashbang;
@@ -41,8 +43,8 @@ export default {
       startScrollOffset
     ) {
       const easeInCubic = function (t) {
-        return t * t * t
-      }
+        return t * t * t;
+      };
       const runtime = currentTime - startTime;
       let progress = runtime / duration;
       progress = Math.min(progress, 1);
@@ -60,17 +62,36 @@ export default {
           );
         });
       }
+    },
+    parallax(bg) {
+      const speed = 3;
+      let pos = "-" + window.pageYOffset / speed + "px";
+      console.log(window.pageYOffset);
+      console.log(pos);
+      bg.style.backgroundPosition = `center ${pos}`;
     }
   },
   mounted() {
     // Grab all the scroll class anchor elements, use whatever class you like
+    const parallaxElements = [...document.getElementsByClassName("parallax")];
+    console.log("parallax elements:");
+    console.log(parallaxElements);
+
+    window.addEventListener("scroll", e => {
+      parallaxElements.forEach(bg => {
+        console.log("parallaxElemenets forEach");
+        console.log(bg);
+        this.parallax(bg);
+      });
+    });
+
     const scrollElems = document.querySelectorAll(".scroll");
     let self = this;
     // Now add an event listeners to those element
     for (let i = 0; i < scrollElems.length; i++) {
       const elem = scrollElems[i];
-      console.log(`scrollElems: `)
-      console.log(elem)
+      console.log(`scrollElems: `);
+      console.log(elem);
       elem.addEventListener("click", function (e) {
         e.preventDefault();
 
