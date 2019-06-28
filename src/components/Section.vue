@@ -105,6 +105,7 @@ $bg-repeat: repeat;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
+  justify-content: center;
   // padding: $section-padding 0;
   box-shadow: 0 0 10px 10px rgba($graphite, 0.75);
 }

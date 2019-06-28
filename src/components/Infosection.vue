@@ -145,11 +145,12 @@ $bg-repeat: repeat;
   // ************* END
   flex-direction: column;
   background-position: 50% 20%;
-  // background-attachment: fixed;
+  background-attachment: fixed;
   // background-repeat: $bg-repeat;
   // padding: $section-padding 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.75);
-  scroll-behavior: smooth;
+  justify-content: center;
+  // scroll-behavior: smooth;
 }
 
 // ************* use the following to offset main content by 10vw for nav

@@ -14,7 +14,7 @@
       alpha="0.5"
       pos="bottom"
       :bg="getImgUrl(`jade.jpg`)"
-      overlay="true"
+      overlay="false"
       :images="this.images.panel2"
       repeat="no-repeat"
       borderWidth="3"
