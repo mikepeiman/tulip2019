@@ -18,28 +18,47 @@ export default {
     subtitle: String
   },
   methods: {
-    parallaxBg(bg, s) {
-      const speed = s ? s : 5;
-      let pos = window.pageYOffset / speed;
-      pos = 60 + (pos / 5 * 2)
-      // bg.style.backgroundPositionY = `0, ${pos}`;
-      // bg.style.backgroundSize = `${pos}`
-      console.log(`bg.style.backgroundSize = "${pos}vh"`)
-      Object.assign(bg.style,{backgroundSize: `"${pos}vh"`})
-      bg.style.cssText = `"background-size: ${pos}vh;"`
+    parallaxBg(el, start, speed) {
+      const scrollSpeed = speed ? speed : 5;
+      let clientHeight = document.documentElement.clientHeight;
+      let pageY = window.pageYOffset
+      let startPos = clientHeight / (100 / start)
+      let pos = startPos - (pageY / scrollSpeed);
+      let posUnit = 100 / clientHeight
+      let opacity = 1
+      opacity += (pos * posUnit / 20)
+      pos = (-pos / 3) + 60 + "vh";
+      setTimeout(() => {
+        console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxBg pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} posUnit ${posUnit} opacity ${opacity} %%%%%%%%%%%%%%%%%%%%%%%`)
+      }, 5);
+      // el.style.backgroundSize = `${pos}`;
+      Object.assign(el.style, {
+        backgroundSize: `${pos}`,
+        opacity: `${opacity}`
+      })
     },
+    // parallaxBg(bg, s) {
+    //   const speed = s ? s : 5;
+    //   let pos = window.pageYOffset / speed;
+      
+    //   // bg.style.backgroundPositionY = `0, ${pos}`;
+    //   // bg.style.backgroundSize = `${pos}`
+    //   console.log(`bg.style.backgroundSize = "${pos}vh"`)
+    //   Object.assign(bg.style, {
+    //     backgroundSize: `"${pos}vh"`
+    //   })
+    //   bg.style.cssText = `"background-size: ${pos}vh;"`
+    // },
     parallaxEl(el, start, speed) {
       const scrollSpeed = speed ? speed : 5;
-
       let clientHeight = document.documentElement.clientHeight;
       let pageY = window.pageYOffset
       let startPos = clientHeight / (100 / start)
       let pos = startPos - (pageY / scrollSpeed) + "px";
-      setTimeout(() => {
-        console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxEl pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} %%%%%%%%%%%%%%%%%%%%%%%`)
-      }, 1);
+      // setTimeout(() => {
+      //   console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxEl pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} %%%%%%%%%%%%%%%%%%%%%%%`)
+      // }, 1);
       el.style.top = `${pos}`;
-      // get viewport height and divide by 2 to get 50vh for starting position, and include that in calculation to change top position
     },
     parallaxImg(el, start, speed) {
       const scrollSpeed = speed ? speed : 5;
@@ -47,11 +66,10 @@ export default {
       let pageY = window.pageYOffset
       let startPos = clientHeight / (100 / start)
       let pos = startPos - (pageY / scrollSpeed) + "px";
-      setTimeout(() => {
-        console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxEl pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} %%%%%%%%%%%%%%%%%%%%%%%`)
-      }, 1);
+      // setTimeout(() => {
+      //   console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxImg pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} %%%%%%%%%%%%%%%%%%%%%%%`)
+      // }, 1);
       el.style.top = `${pos}`;
-      // get viewport height and divide by 2 to get 50vh for starting position, and include that in calculation to change top position
     }
   },
   mounted: function () {
@@ -59,7 +77,7 @@ export default {
       let bg = document.querySelector('#hero-bg')
       let title = document.querySelector('#hero-heading')
       let logo = document.querySelector('#logo')
-      this.parallaxImg(bg, 1, 4);
+      this.parallaxBg(bg, 1, 4);
       this.parallaxImg(logo, -20, 25);
       this.parallaxEl(title, 50, 2);
     });
