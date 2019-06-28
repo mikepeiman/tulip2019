@@ -21,7 +21,7 @@
 import hexToRgba from "hex-to-rgba";
 
 export default {
-  name: "Infosection",
+  name: "Hero",
   props: {
     title: String,
     subtitle: String,
@@ -115,6 +115,8 @@ export default {
 
     window.addEventListener("scroll", e => {
       parallaxElements.forEach(bg => {
+        console.log("parallaxElemenets forEach");
+        console.log(bg);
         this.parallax(bg);
       });
     });

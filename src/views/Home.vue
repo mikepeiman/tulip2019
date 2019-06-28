@@ -1,13 +1,12 @@
 <template>
   <div class="home" id="section-home">
-    <HeroHome
 
+    <HeroHome
       title="Tulip Electronics Inc"
       subtitle="Delivering Reliable CNC Memory Upgrades Since 1988"
     />
     <ProductCardsSection class="scroll" id="section-cards"/>
     <Infosection
-
       id="section-products"
       title="Products"
       subtitle="All Our Memory Upgrades"
@@ -73,6 +72,7 @@
 <script>
 // @ is an alias to /src
 import HeroHome from "@/components/HeroHome.vue";
+import Hero from "@/components/Hero.vue";
 import Nav from "@/components/Nav.vue";
 import ProductCard from "@/components/ProductCard.vue";
 import ProductCardsSection from "@/components/ProductCardsSection.vue";
@@ -86,6 +86,7 @@ export default {
   name: "Home",
   components: {
     HeroHome,
+    Hero,
     ProductCardsSection,
     Infosection,
     Contact,
