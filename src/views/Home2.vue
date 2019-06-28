@@ -168,15 +168,8 @@
 
 <script>
 // @ is an alias to /src
-import HeroHome from "@/components/HeroHome.vue";
-import Nav from "@/components/Nav.vue";
-import ProductCard from "@/components/ProductCard.vue";
 import ProductCardsSection from "@/components/ProductCardsSection.vue";
 import Infosection from "@/components/Infosection.vue";
-import Contact from "@/components/Contact.vue";
-import Footer from "@/components/Footer.vue";
-import SignUp from "@/components/SignUp.vue";
-import Boilerplate from "@/components/Boilerplate.vue";
 
 export default {
   name: "Home2",

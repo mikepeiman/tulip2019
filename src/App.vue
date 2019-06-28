@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <!-- <div class="body-bg"></div> -->
-    <Nav/>
+    <TopNav flexDirection="row" />
+    <SideNav flexDirection="column" />
     <div class="main">
       <transition :name="transitionName" mode="out-in">
         <router-view/>
@@ -12,12 +13,14 @@
 
 <script>
 import axios from "axios";
-import Nav from "@/components/Nav.vue";
+import TopNav from "@/components/TopNav.vue";
+import SideNav from "@/components/SideNav.vue";
 
 export default {
   name: "App",
   components: {
-    Nav
+    TopNav,
+    SideNav
   },
   data() {
     return {
@@ -79,8 +82,7 @@ h1 {
 body {
   margin: 0;
   height: 100vh;
-  // width: calc(100vw - 16.8px);
-  background: #161616;
+  background: white;
 }
 
 #app {
@@ -89,12 +91,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
+  // display: grid;
+  grid-template-areas:
+  "topnav topnav"
+  "sidenav main";
+  grid-template-columns: 10vw 90vw;
+  justify-content: center;
+  width: 100vw;
   & .main {
     grid-area: main;
   }
 
-  & nav {
-    grid-area: nav;
+  & #nav-side {
+    grid-area: sidenav;
+  }
+  & #nav-top {
+    grid-area: topnav;
   }
 
 

@@ -1,31 +1,25 @@
 <template>
-<div id="nav">
-  <div class="nav-inner">
-    <h2 style="color: white;">Router Page by router.js</h2>
+<div id="nav-top" :style="navStyle">
     <router-link to="/">Home</router-link>
     <router-link to="/home2">Home2</router-link>
     <router-link to="/about">About</router-link>
     <router-link to="/products">Products</router-link>
     <router-link to="/contact">Contact</router-link>
-  </div>
-  <div class="nav-inner">
-    <h2 style="color: white;">Single Page by ID</h2>
-    <router-link class="scroll" to="#section-home">Home</router-link>
-    <router-link class="scroll" to="#section-cards">Cards</router-link>
-    <router-link class="scroll" to="#section-products">Products</router-link>
-    <router-link class="scroll" to="#section-about">About</router-link>
-    <router-link class="scroll" to="#section-contact">Contact</router-link>
-  </div>
 </div>
 </template>
 
 <script>
 export default {
-  name: "Nav",
+  name: "TopNav",
   props: {
-    msg: String
+    flexDirection: String
   },
-  methods: {
+  computed: {
+    navStyle() {
+      return `flex-direction: ${this.flexDirection};`
+    }
+  },
+methods: {
     hello: function () {
       alert("hello!");
       console.log(
@@ -66,6 +60,7 @@ export default {
 
   },
   mounted() {
+    console.log(`flex-direction: ${this.flexDirection};`)
     // Grab all the scroll class anchor elements, use whatever class you like
 
     const scrollElems = document.querySelectorAll(".scroll");
@@ -105,8 +100,8 @@ export default {
         });
       });
     }
-  }
-};
+  },
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -114,20 +109,21 @@ export default {
 <style lang="scss" scoped>
 @import "../styles/app.scss";
 
-#nav {
+#nav-top {
   z-index: 99;
   padding: 20px;
   color: rgba(0, 0, 0, 0);
   // background: rgba(0, 0, 0, 0.25);
   // border-bottom: 3px solid change-color($blue, $lightness: 40%, $alpha: .5);
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   padding: 0;
   margin: 0;
-  height: 100vh;
-  width: 10vw;
+  // height: 100vh;
+  width: 100vw;
   align-items: center;
   justify-content: center;
+  justify-self: center;
   position: fixed;
 
   // border-right: 3px solid $blue;
@@ -147,11 +143,12 @@ export default {
     color: white;
     margin: 1px;
     text-decoration: none;
-    width: 55%;
+    width: 10ch;
     display: flex;
     height: 25px;
     align-items: center;
     align-self: center;
+    justify-content: center;
     background: change-color($blue, $lightness: 40%, $alpha: 0.75);
     padding: 0.5rem 1.25rem 0.5rem 0.75rem;
     transition: all 0.15s;

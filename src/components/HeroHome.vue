@@ -37,18 +37,6 @@ export default {
         opacity: `${opacity}`
       })
     },
-    // parallaxBg(bg, s) {
-    //   const speed = s ? s : 5;
-    //   let pos = window.pageYOffset / speed;
-      
-    //   // bg.style.backgroundPositionY = `0, ${pos}`;
-    //   // bg.style.backgroundSize = `${pos}`
-    //   console.log(`bg.style.backgroundSize = "${pos}vh"`)
-    //   Object.assign(bg.style, {
-    //     backgroundSize: `"${pos}vh"`
-    //   })
-    //   bg.style.cssText = `"background-size: ${pos}vh;"`
-    // },
     parallaxEl(el, start, speed) {
       const scrollSpeed = speed ? speed : 5;
       let clientHeight = document.documentElement.clientHeight;
@@ -70,6 +58,7 @@ export default {
       //   console.log(`%%%%%%%%%%%%%%%%%%%%%%% parallaxImg pagepageYffset ${pageY} clientHeight ${clientHeight} pos ${pos} %%%%%%%%%%%%%%%%%%%%%%%`)
       // }, 1);
       el.style.top = `${pos}`;
+      el.style.opacity = 1;
     }
   },
   mounted: function () {
@@ -107,6 +96,7 @@ export default {
   top: -20vh;
   width: 35vh;
   margin-bottom: 2rem;
+  z-index:10;
 }
 
 .hero-bg {
