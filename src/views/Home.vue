@@ -43,7 +43,7 @@
       alpha="0.75"
       pos="bottom"
       :bg="getImgUrl(`leather-nunchuck.png`)"
-      overlay="true"
+      :overlay="true"
       :images="this.images.panel3"
       repeat="repeat"
       borderWidth="3"

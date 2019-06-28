@@ -89,15 +89,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-  // display: grid;
-  // grid-template-columns: [nav] 10vw [main] 90vw;
-
-  // background: url("./assets/bg06.png") no-repeat 50% 20% fixed;
-  // background-size: 50vh;
-  // @include media(">large") {
-  //   background: url("./assets/bg06.png") no-repeat 50% 0% fixed;
-  // background-size: 75vh;
-  // }
   & .main {
     grid-area: main;
   }
@@ -106,33 +97,20 @@ body {
     grid-area: nav;
   }
 
-  $bg: "the-illusionist.png";
-  background-image: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.75) 15%,
-      rgba(100, 100, 100, 0.85) 47%,
-      rgba(0, 0, 0, 0.75)
-    ),
-    url("./assets/"+$bg);
-  background-repeat: repeat;
-  background-position: fixed;
-  background-attachment: fixed;
 
-  // background-size: cover;
-  // background-size: 50vh;
   @include media(">large") {
-    background-image: linear-gradient(
-        135deg,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(0, 0, 0, 0.95) 30%,
-        rgba(0, 0, 0, 1) 50%,
-        rgba(0, 0, 0, 0.95) 70%,
-        rgba(0, 0, 0, 0.5)
-      ),
-      url("./assets/"+$bg);
-    background-repeat: repeat;
+    // background-image: linear-gradient(
+    //     135deg,
+    //     rgba(0, 0, 0, 0.5) 0%,
+    //     rgba(0, 0, 0, 0.95) 30%,
+    //     rgba(0, 0, 0, 1) 50%,
+    //     rgba(0, 0, 0, 0.95) 70%,
+    //     rgba(0, 0, 0, 0.5)
+    //   ),
+    //   url("./assets/"+$bg);
+    // background-repeat: repeat;
     // background-position: bottom;
-    background-attachment: fixed;
+    // background-attachment: fixed;
     // background-size: cover;
     // background-size: 75vh;
   }

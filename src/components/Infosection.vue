@@ -1,20 +1,20 @@
 <template>
-  <div class="section-container parallax" :style="overlay ? containerStyle : containerClearStyle">
-    <div class="section-nav-spacer"></div>
-    <div class="section-main">
-      <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
-      <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
-      <div class="triangle-container" :style="contentStyle">
-        <p class="section-content">{{ content }}</p>
-        <div class="css-triangle" :style="triangleStyle"></div>
-      </div>
-      <!-- </div> -->
-      <slot></slot>
-      <div class="image-container" v-if="images">
-        <div class="section-image" v-for="image in images" :style="imageStyle(image)"></div>
-      </div>
+<section class="section-container parallax" :style="overlay ? containerStyle : containerClearStyle">
+  <div class="section-nav-spacer"></div>
+  <div class="section-main">
+    <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
+    <h2 class="section-subtitle" :style="subtitleStyle">{{ subtitle }}</h2>
+    <div class="triangle-container" :style="contentStyle">
+      <p class="section-content">{{ content }}</p>
+      <div class="css-triangle" :style="triangleStyle"></div>
+    </div>
+    <!-- </div> -->
+    <slot></slot>
+    <div class="image-container" v-if="images">
+      <div class="section-image" v-for="image in images" :style="imageStyle(image)"></div>
     </div>
   </div>
+</section>
 </template>
 
 <script>
@@ -98,11 +98,28 @@ export default {
       background-image: url(${this.getImgUrl(image)});
       border: 1px solid ${this.primaryColor};
       `;
+    },
+    parallax(bg) {
+      const speed = 5;
+      let pos = "-" + window.pageYOffset / speed + "px";
+      console.log(window.pageYOffset);
+      console.log(bg.style);
+      bg.style.backgroundPositionY = `0, ${pos}`;
     }
   },
-  mounted: function() {
-    // console.log("Infosection mounted");
-    // console.log(this.convert(this.bgColor, 0.5));
+  mounted: function () {
+    console.log("Infosection mounted");
+    const parallaxElements = [...document.getElementsByClassName("parallax")];
+    console.log("parallax elements:");
+    console.log(parallaxElements);
+
+    window.addEventListener("scroll", e => {
+      parallaxElements.forEach(bg => {
+        console.log("parallaxElemenets forEach");
+        console.log(bg);
+        this.parallax(bg);
+      });
+    });
   }
 };
 </script>
@@ -130,8 +147,8 @@ $bg-repeat: repeat;
   // ************* END
   flex-direction: column;
   background-position: 50% 20%;
-  background-attachment: fixed;
-  background-repeat: $bg-repeat;
+  // background-attachment: fixed;
+  // background-repeat: $bg-repeat;
   // padding: $section-padding 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.75);
   scroll-behavior: smooth;
@@ -147,6 +164,7 @@ $bg-repeat: repeat;
   display: flex;
   flex-direction: column;
 }
+
 // ************* END
 
 .section-title {
@@ -196,6 +214,7 @@ $bg-repeat: repeat;
   background-size: cover;
   box-shadow: 0 0 5px 0px rgba(0, 0, 0, 0.75);
   transition: all 0.25s;
+
   &:hover {
     transform: scale(1.06);
     box-shadow: 0px 2px 8px 3px rgba(0, 0, 0, 0.9);

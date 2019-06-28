@@ -63,27 +63,10 @@ export default {
         });
       }
     },
-    parallax(bg) {
-      const speed = 3;
-      let pos = "-" + window.pageYOffset / speed + "px";
-      console.log(window.pageYOffset);
-      console.log(pos);
-      bg.style.backgroundPosition = `center ${pos}`;
-    }
+
   },
   mounted() {
     // Grab all the scroll class anchor elements, use whatever class you like
-    const parallaxElements = [...document.getElementsByClassName("parallax")];
-    console.log("parallax elements:");
-    console.log(parallaxElements);
-
-    window.addEventListener("scroll", e => {
-      parallaxElements.forEach(bg => {
-        console.log("parallaxElemenets forEach");
-        console.log(bg);
-        this.parallax(bg);
-      });
-    });
 
     const scrollElems = document.querySelectorAll(".scroll");
     let self = this;

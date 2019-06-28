@@ -1,11 +1,11 @@
 <template>
-  <div class="section-container" :style="containerStyle">
+  <section class="section-container parallax" :style="containerStyle">
     <div class="section-nav-spacer"></div>
     <div class="section-main">
       <h1 class="section-title" :style="titleStyle">{{ title }}</h1>
       <slot></slot>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
