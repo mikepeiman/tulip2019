@@ -16,10 +16,6 @@ export default new Router({
     {
       path: '/home2',
       name: 'home2',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      // component: Home2,
       component: () => import(/* webpackChunkName: "about" */ './views/Home2.vue'),
       meta: { transitionName: 'slide' }
     },
@@ -30,16 +26,16 @@ export default new Router({
       meta: { transitionName: 'slide' }
     },
     {
+      path: '/products',
+      name: 'products',
+      component: () => import(/* webpackChunkName: "products" */ './views/Products.vue'),
+      meta: { transitionName: 'slide' }
+    },
+    {
       path: '/contact',
       name: 'contact',
       component: () => import(/* webpackChunkName: "contact" */ './views/Contact.vue'),
       meta: { transitionName: 'slide' }
     },
-    {
-      path: '/products',
-      name: 'products',
-      component: () => import(/* webpackChunkName: "products" */ './views/Products.vue'),
-      meta: { transitionName: 'slide' }
-    }
   ]
 })

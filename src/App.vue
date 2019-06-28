@@ -1,14 +1,14 @@
 <template>
-  <div id="app">
-    <!-- <div class="body-bg"></div> -->
-    <TopNav flexDirection="row" />
-    <SideNav flexDirection="column" />
-    <div class="main">
-      <transition :name="transitionName" mode="out-in">
-        <router-view/>
-      </transition>
-    </div>
+<div id="app">
+  <!-- <div class="body-bg"></div> -->
+  <TopNav flexDirection="row" />
+  <SideNav flexDirection="column" />
+  <div class="main">
+    <transition :name="transitionName" mode="out-in">
+      <router-view />
+    </transition>
   </div>
+</div>
 </template>
 
 <script>
@@ -30,46 +30,54 @@ export default {
   },
   created() {
     this.$router.beforeEach((to, from, next) => {
-          let transitionName = to.meta.transitionName || from.meta.transitionName;
-          if (transitionName === 'slide') {
-            const toDepth = to.path.split('/').length;
-            const fromDepth = from.path.split('/').length;
-            transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left';
-            this.transitionName = transitionName || DEFAULT_TRANSITION;
-            next();
-          };
-      });
+      let transitionName = to.meta.transitionName || from.meta.transitionName;
+      if (transitionName === 'slide') {
+        let routes = []
+        this.$router.options.routes.forEach(route => {
+          routes.push(route.path)
+        })
+        // const toDepth = to.path.split('/').length;
+        // const fromDepth = from.path.split('/').length;
+        let indexTo = routes.indexOf(to.path)
+        let indexFrom = routes.indexOf(from.path)
+        console.log(`indexTo ${to.path} ${indexTo} indexFrom ${from.path} ${indexFrom}`)
+        indexTo > indexFrom ? console.log('indexTo > indexFrom') : console.log('indexTo < indexFrom')
+        transitionName = indexTo < indexFrom ? 'slide-right' : 'slide-left';
+        this.transitionName = transitionName;
+        next();
+      };
+    });
   },
-      methods: {
-        getImgUrl(img) {
-          return require(img);
-        },
-        getData: function () {
-          var Airtable = require("airtable");
-          axios({
-            url: this.apiUrl + this.base + "/Menu?view=Grid%20view",
-            headers: {
-              Authorization: `Bearer ${this.apiKey}`
-            }
-          }).then(res => {
-            this.records = res.data.records;
-            console.log(this.records);
-          });
-        },
-        logData() {
-          console.log(`this.productList: ${this.productList}`);
-          console.log(this.productList);
-        },
-        scrollFix: function (hashbang) {
-          location.href = hashbang;
+  methods: {
+    getImgUrl(img) {
+      return require(img);
+    },
+    getData: function () {
+      var Airtable = require("airtable");
+      axios({
+        url: this.apiUrl + this.base + "/Menu?view=Grid%20view",
+        headers: {
+          Authorization: `Bearer ${this.apiKey}`
         }
-      },
-      mounted: function () {
-        if (this.$route.hash) {
-          setTimeout(() => this.scrollFix(this.$route.hash), 1);
-        }
-      }
-  };
+      }).then(res => {
+        this.records = res.data.records;
+        console.log(this.records);
+      });
+    },
+    logData() {
+      console.log(`this.productList: ${this.productList}`);
+      console.log(this.productList);
+    },
+    scrollFix: function (hashbang) {
+      location.href = hashbang;
+    }
+  },
+  mounted: function () {
+    if (this.$route.hash) {
+      setTimeout(() => this.scrollFix(this.$route.hash), 1);
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -93,11 +101,12 @@ body {
   color: #fff;
   // display: grid;
   grid-template-areas:
-  "topnav topnav"
-  "sidenav main";
+    "topnav topnav"
+    "sidenav main";
   grid-template-columns: 10vw 90vw;
   justify-content: center;
   width: 100vw;
+
   & .main {
     grid-area: main;
   }
@@ -105,10 +114,10 @@ body {
   & #nav-side {
     grid-area: sidenav;
   }
+
   & #nav-top {
     grid-area: topnav;
   }
-
 
   @include media(">large") {
     // background-image: linear-gradient(

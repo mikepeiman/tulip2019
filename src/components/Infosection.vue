@@ -43,7 +43,9 @@ export default {
   },
   components: {},
   data() {
-    return {};
+    return {
+      transitionName: ''
+    };
   },
   computed: {
     containerStyle() {
@@ -117,6 +119,29 @@ export default {
       parallaxElements.forEach(bg => {
         this.parallax(bg);
       });
+    });
+    console.log('infosection mounted() for transitions !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    this.$router.beforeEach((to, from, next) => {
+      // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!! app.vue created()')
+      // console.log(to)
+      // console.log(from)
+      let transitionName = to.meta.transitionName || from.meta.transitionName;
+      if (transitionName === 'slide') {
+        let routes = []
+        this.$router.options.routes.forEach(route => {
+          routes.push(route.path)
+        })
+        // const toDepth = to.path.split('/').length;
+        // const fromDepth = from.path.split('/').length;
+        let indexTo = routes.indexOf(to.path)
+        let indexFrom = routes.indexOf(from.path)
+        console.log(`indexTo ${indexTo} indexFrom ${indexFrom}`)
+        
+        transitionName = indexTo < indexFrom ? 'slide-right' : 'slide-left';
+        console.log(transitionName)
+        this.transitionName = transitionName;
+        next();
+      };
     });
   }
 };

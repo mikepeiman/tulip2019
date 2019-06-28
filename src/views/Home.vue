@@ -26,7 +26,6 @@
       borderWidth="3"
     />
     <Infosection
-
       id="section-about"
       title="About Us"
       subtitle="A Family Business For Over Thirty Years"
@@ -47,7 +46,6 @@
       borderWidth="3"
     />
     <Infosection
-
       id="section-contact"
       title="Contact Us"
       subtitle="Contact Form"
@@ -71,8 +69,6 @@
 <script>
 // @ is an alias to /src
 import HeroHome from "@/components/HeroHome.vue";
-import Hero from "@/components/Hero.vue";
-import ProductCard from "@/components/ProductCard.vue";
 import ProductCardsSection from "@/components/ProductCardsSection.vue";
 import Infosection from "@/components/Infosection.vue";
 import Contact from "@/components/Contact.vue";
@@ -84,7 +80,6 @@ export default {
   name: "Home",
   components: {
     HeroHome,
-    Hero,
     ProductCardsSection,
     Infosection,
     Contact,
