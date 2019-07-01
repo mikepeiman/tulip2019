@@ -37,8 +37,17 @@ export default {
   methods: {
     expandRow(e) {
       console.log('expandRow')
-      console.log(e.target.parentNode)
-      let row = e.target.parentNode
+      console.log(e.target)
+      let row
+      if(e.target.classList.contains('absolute-modal')) {
+        console.log('modal class already applied; toggling off')
+        row = e.target
+      } else {
+        console.log('modal class being applied; toggling on')
+        console.log(e.target.parentNode)
+        row = e.target.parentNode
+      }
+      
       row.classList.toggle('absolute-modal')
     }
   }
@@ -78,7 +87,7 @@ export default {
   & h3 {
     font-size: 1rem;
     font-weight: 400;
-    font-family: "montserrat";
+    font-family: "Montserrat";
     color: white;
     padding: 0.5rem;
     margin: 0;
@@ -138,7 +147,6 @@ table {
       background: change-color($blue, $lightness: 45%, $alpha: 1);
       transform: scale(1.02);
       box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.5);
-      height: 150%;
       & .product-card-add-to-cart {
         background: white;
       }
@@ -151,14 +159,46 @@ table {
   }
 }
 .absolute-modal {
-  position: absolute;
-  color: $green;
-  width: 50vw;
-  height: 50vh;
-  top: 25vh;
-  left: 25vw;
-  transition: all .25s;
-  z-index: 99;
+    position: absolute;
+    color: #76D311;
+    background: change-color($blue, $lightness: 45%, $alpha: 1);
+    width: 80vw;
+    height: 75vh;
+    padding: 0;
+    /* margin: 2rem; */
+    bottom: 0vh;
+    left: 10vw;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+    z-index: 9;
+    transform: translate(-50%, 0%);
+    &:hover {
+          position: absolute;
+    color: #76D311;
+    background: change-color($blue, $lightness: 45%, $alpha: 1);
+    width: 80vw;
+    height: 75vh;
+    padding: 0;
+    /* margin: 2rem; */
+    bottom: 0vh;
+    left: 10vw;
+    -webkit-transition: all .25s;
+    transition: all .25s;
+    z-index: 9;
+    transform: translate(-50%, 0%);
+
+    }
+    // &:after {
+    //   content: "";
+    //   width: 100vw;
+    //   height: 100vh;
+      
+    //   background: black;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    //   z-index: 8;
+    // }
 }
 
 .product-card-add-to-cart {

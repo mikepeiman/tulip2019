@@ -139,21 +139,21 @@ body {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition-duration: 0.3s;
+  transition-duration: 1.3s;
   transition-property: opacity;
   transition-timing-function: ease;
 }
 
 .fade-enter,
 .fade-leave-active {
-  opacity: 0;
+  opacity: 1;
 }
 
 .slide-left-enter-active,
 .slide-left-leave-active,
 .slide-right-enter-active,
 .slide-right-leave-active {
-  transition-duration: 0.5s;
+  transition-duration: 1.3s;
   transition-property: height, opacity, transform;
   transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
   overflow: hidden;
