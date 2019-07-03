@@ -42,6 +42,9 @@ export default {
       if(e.target.classList.contains('absolute-modal')) {
         console.log('modal class already applied; toggling off')
         row = e.target
+        parent = e.target.parentNode
+        console.log('parent')
+        console.log(parent)
       } else {
         console.log('modal class being applied; toggling on')
         console.log(e.target.parentNode)
@@ -158,36 +161,46 @@ table {
     // border-bottom: 1px solid rgba(255,255,255,0.5);
   }
 }
+
+.flexify-table {
+      text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .absolute-modal {
+  display: flex;
     position: absolute;
     color: #76D311;
     background: change-color($blue, $lightness: 45%, $alpha: 1);
-    width: 80vw;
-    height: 75vh;
+    width: 327%;
+    height: 100%;
     padding: 0;
     /* margin: 2rem; */
-    bottom: 0vh;
-    left: 10vw;
+    bottom: 0;
+    left: 0;
     -webkit-transition: all .25s;
     transition: all .25s;
     z-index: 9;
-    transform: translate(-50%, 0%);
-    &:hover {
-          position: absolute;
-    color: #76D311;
-    background: change-color($blue, $lightness: 45%, $alpha: 1);
-    width: 80vw;
-    height: 75vh;
-    padding: 0;
-    /* margin: 2rem; */
-    bottom: 0vh;
-    left: 10vw;
-    -webkit-transition: all .25s;
-    transition: all .25s;
-    z-index: 9;
-    transform: translate(-50%, 0%);
+    // transform: translate(-50%, 0%);
+    // &:hover {
+    //       position: absolute;
+    // color: #76D311;
+    // background: change-color($blue, $lightness: 45%, $alpha: 1);
+    // width: 80vw;
+    // height: 75vh;
+    // padding: 0;
+    // /* margin: 2rem; */
+    // bottom: 0vh;
+    // left: 10vw;
+    // -webkit-transition: all .25s;
+    // transition: all .25s;
+    // z-index: 9;
+    // transform: translate(-50%, 0%);
 
-    }
+    // }
     // &:after {
     //   content: "";
     //   width: 100vw;

@@ -4,8 +4,10 @@
   <TopNav flexDirection="row" />
   <SideNav flexDirection="column" />
   <div class="main">
+    
     <transition :name="transitionName" mode="out-in">
       <router-view />
+      <!-- <component v-bind:is="router-view"></component> -->
     </transition>
   </div>
 </div>
@@ -160,12 +162,12 @@ body {
 }
 
 .slide-left-enter,
-.slide-right-leave-active {
+.slide-right-leave-to {
   opacity: 0;
   transform: translate(100vw, 0);
 }
 
-.slide-left-leave-active,
+.slide-left-leave-to,
 .slide-right-enter {
   opacity: 0;
   transform: translate(-100vw, 0);

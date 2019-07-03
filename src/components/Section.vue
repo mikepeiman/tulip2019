@@ -94,7 +94,8 @@ $bg-repeat: repeat;
 
 .section-container {
   z-index: 11;
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 100%;
   display: flex;
   // ************* use the following to offset main content by 10vw for nav
   //
@@ -105,6 +106,7 @@ $bg-repeat: repeat;
   background-position: 50% 20%;
   background-attachment: fixed;
   background-repeat: $bg-repeat;
+  padding: 2rem 2rem 4rem 2rem;
   justify-content: center;
   // padding: $section-padding 0;
   box-shadow: 0 0 10px 10px rgba($graphite, 0.75);

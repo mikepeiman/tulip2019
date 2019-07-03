@@ -197,7 +197,7 @@ export default {
 }
 
 #productCardsSection {
-  display: grid;
+  display: flex;
   justify-content: center;
   // grid-template-columns: 10vw 90vw;
 }
